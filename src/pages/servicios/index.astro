@@ -1,0 +1,34 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ServiceTiles from "../../components/ServiceTiles.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { services } from "../../data/services";
+import { img } from "../../data/site";
+const main = services.filter((s) => s.group === "servicio");
+const disc = services.filter((s) => s.group === "disciplina");
+---
+<Layout title="Servicios de ingeniería para minería e industria | S&M Ingeniería" description="Ingeniería conceptual, básica y de detalle, gestión de abastecimiento y gestión de proyectos EP, EPC y EPCM, en las disciplinas civil, mecánica y eléctrica.">
+  <PageHero
+    title="Servicios integrales de ingeniería y gestión de proyectos"
+    text="Servicios del tipo EP, EPC y EPCM: ingeniería, gestión de abastecimiento, construcción y gestión de proyectos, con alta especialización en minería e industria."
+    image={img.foto4}
+    crumbs={[{ label: "Servicios" }]}
+  />
+  <section class="section">
+    <div class="wrap">
+      <h2>Lo que hacemos</h2>
+      <p class="lead intro">Elija el servicio que necesita para ver su alcance, cómo trabajamos y proyectos relacionados.</p>
+      <ServiceTiles items={main} />
+    </div>
+  </section>
+  <section class="section section--stone">
+    <div class="wrap">
+      <h2>Disciplinas</h2>
+      <p class="lead intro">Equipo multidisciplinario con más de 15 años de experiencia en proyectos mineros.</p>
+      <ServiceTiles items={disc} />
+    </div>
+  </section>
+  <CtaBand />
+</Layout>
+<style>.intro { margin-bottom: 40px; }</style>

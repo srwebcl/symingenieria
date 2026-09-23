@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { img, site } from "../data/site";
+---
+<Layout title="Nosotros | S&M Ingeniería SpA" description="S&M Ingeniería SpA nace en la Región de Coquimbo para entregar servicios de ingeniería a la minería e industria, con foco en el cliente y bajo costo.">
+  <PageHero
+    title="Ingeniería nacida en la Región de Coquimbo"
+    text="Servicios profesionales de ingeniería orientados a la minería e industria, con el foco puesto en nuestros clientes."
+    image={img.foto3}
+    crumbs={[{ label: "Nosotros" }]}
+  />
+  <section class="section">
+    <div class="wrap grid-2">
+      <div>
+        <h2>Nuestra historia</h2>
+        <p class="lead">S&M Ingeniería SpA nace en la Región de Coquimbo para cubrir la necesidad de servicios profesionales de ingeniería orientados a la minería e industria.</p>
+        <p>Mantenemos el control de todos nuestros procesos para asegurar la calidad del servicio, sin generar grandes estructuras administrativas. Así mantenemos un bajo costo para nuestros clientes.</p>
+        <p>Nuestros profesionales cuentan con una amplia trayectoria en ingeniería, procesos constructivos y gestión integral de proyectos mineros e industriales, lo que nos califica para desarrollar proyectos EP, EPC y EPCM.</p>
+      </div>
+      <div class="ratio"><img src={img.oficina} alt="Oficina de S&M Ingeniería en Balmaceda 1625, La Serena" loading="lazy" /></div>
+    </div>
+  </section>
+  <section class="section section--stone">
+    <div class="wrap mv">
+      <div>
+        <h2>Misión</h2>
+        <p>Entregar soluciones de ingeniería, servicios de construcción y gestión de proyectos con un alto nivel de calidad y especialización en proyectos mineros e industriales de la zona centro-norte de Chile, cubriendo las variadas necesidades de nuestros clientes.</p>
+      </div>
+      <div>
+        <h2>Visión</h2>
+        <p>Ser una empresa líder en servicios integrales de ingeniería y construcción para la gran minería e industria chilena, destacada por su profesionalismo y por innovar constantemente con nuevos procesos y tecnologías.</p>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <h2>Dónde estamos</h2>
+      <p class="lead">Oficina central en {site.address}. Coordinamos reuniones en {site.offices.join(", ")}.</p>
+      <div class="map">
+        <iframe title="Mapa de la oficina de S&M Ingeniería en La Serena" loading="lazy"
+          src="https://www.google.com/maps?q=Balmaceda+1625,+La+Serena,+Chile&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Layout>
+<style>
+  .mv { display: grid; gap: 48px; grid-template-columns: 1fr; }
+  @media (min-width: 800px) { .mv { grid-template-columns: 1fr 1fr; } }
+  .mv > div { border-top: 4px solid var(--accent); padding-top: 24px; }
+  .mv p { font-size: 1.15rem; }
+  .map { margin-top: 32px; aspect-ratio: 16 / 7; min-height: 320px; background: var(--stone); }
+  .map iframe { width: 100%; height: 100%; border: 0; }
+</style>

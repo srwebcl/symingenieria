@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { img, projects } from "../data/site";
+---
+<Layout title="Proyectos | S&M Ingeniería SpA" description="Proyectos de ingeniería y construcción para Minera Escondida, CAP Minería y clientes industriales de la zona centro-norte de Chile.">
+  <PageHero
+    title="Proyectos"
+    text="Una muestra de los proyectos mineros e industriales en los que ha participado nuestro equipo."
+    image={img.eolicas}
+    crumbs={[{ label: "Proyectos" }]}
+  />
+  <section class="section">
+    <div class="wrap"><ProjectGrid items={projects} /></div>
+  </section>
+  <CtaBand />
+</Layout>

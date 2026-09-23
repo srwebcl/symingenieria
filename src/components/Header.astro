@@ -1,0 +1,135 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+import { services } from "../data/services";
+import { site } from "../data/site";
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === "/" ? path === "/" : path.startsWith(href));
+const main = services.filter((s) => s.group === "servicio");
+const disc = services.filter((s) => s.group === "disciplina");
+---
+<header class="hdr">
+  <div class="wrap bar">
+    <Logo />
+    <nav class="nav" aria-label="Principal">
+      <a href="/" aria-current={isActive("/") ? "page" : undefined}>Inicio</a>
+      <a href="/nosotros" aria-current={isActive("/nosotros") ? "page" : undefined}>Nosotros</a>
+      <div class="has-mega">
+        <button class="mega-btn" aria-expanded="false" aria-controls="mega" data-active={isActive("/servicios") || undefined}>
+          Servicios
+          <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </button>
+        <div class="mega" id="mega" hidden>
+          <div class="wrap mega-in">
+            <div class="mega-intro">
+              <h2>Servicios</h2>
+              <p>Ingeniería, abastecimiento y gestión de proyectos para la minería e industria.</p>
+              <a class="more" href="/servicios"><span class="dot"><Icon name="arrow" size={18} /></span>Ver todos los servicios</a>
+            </div>
+            <div>
+              <h3>Lo que hacemos</h3>
+              <ul>{main.map((s) => <li><a href={`/servicios/${s.slug}`}>{s.name}</a></li>)}</ul>
+            </div>
+            <div>
+              <h3>Disciplinas</h3>
+              <ul>{disc.map((s) => <li><a href={`/servicios/${s.slug}`}>{s.name}</a></li>)}</ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="/proyectos" aria-current={isActive("/proyectos") ? "page" : undefined}>Proyectos</a>
+    </nav>
+    <div class="actions">
+      <a class="tel" href={site.phoneHref}>{site.phone}</a>
+      <a class="btn cta" href="/contacto">Contacto</a>
+      <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="drawer" id="drawer" hidden>
+    <nav class="wrap" aria-label="Menú móvil">
+      <a href="/">Inicio</a>
+      <a href="/nosotros">Nosotros</a>
+      <a href="/servicios">Servicios</a>
+      <ul>{services.map((s) => <li><a href={`/servicios/${s.slug}`}>{s.name}</a></li>)}</ul>
+      <a href="/proyectos">Proyectos</a>
+      <a href="/contacto">Contacto</a>
+      <a class="btn" href={site.phoneHref}>Llamar {site.phone}</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const megaBtn = document.querySelector<HTMLButtonElement>(".mega-btn");
+  const mega = document.getElementById("mega");
+  const burger = document.querySelector<HTMLButtonElement>(".burger");
+  const drawer = document.getElementById("drawer");
+
+  const toggle = (btn: HTMLButtonElement | null, panel: HTMLElement | null, force?: boolean) => {
+    if (!btn || !panel) return;
+    const open = force ?? btn.getAttribute("aria-expanded") !== "true";
+    btn.setAttribute("aria-expanded", String(open));
+    panel.hidden = !open;
+    if (panel === drawer) document.body.style.overflow = open ? "hidden" : "";
+  };
+
+  megaBtn?.addEventListener("click", () => toggle(megaBtn, mega));
+  burger?.addEventListener("click", () => toggle(burger, drawer));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { toggle(megaBtn, mega, false); toggle(burger, drawer, false); }
+  });
+  document.addEventListener("click", (e) => {
+    const t = e.target as Node;
+    if (mega && !mega.hidden && !mega.contains(t) && !megaBtn?.contains(t)) toggle(megaBtn, mega, false);
+  });
+</script>
+
+<style>
+  .hdr { position: sticky; top: 0; z-index: 50; background: var(--white); border-bottom: 1px solid var(--line); }
+  .bar { height: var(--header-h); display: flex; align-items: center; gap: 32px; }
+  .nav { display: none; gap: 30px; margin-left: auto; align-items: center; }
+  .nav > a, .mega-btn {
+    font-family: var(--display); font-weight: 600; font-size: 1rem; text-decoration: none; color: var(--ink);
+    background: none; border: 0; padding: 26px 0; cursor: pointer; display: inline-flex; gap: 6px; align-items: center;
+    border-bottom: 3px solid transparent;
+  }
+  .nav > a:hover, .mega-btn:hover { color: var(--accent); }
+  .nav > a[aria-current="page"], .mega-btn[data-active] { border-bottom-color: var(--accent); }
+  .mega-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+
+  .mega { position: absolute; left: 0; right: 0; top: 100%; background: var(--white); border-top: 1px solid var(--line); box-shadow: 0 30px 40px -30px rgba(31, 42, 51, 0.35); }
+  .mega-in { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 48px; padding-block: 44px 52px; }
+  .mega h2 { font-size: 2rem; }
+  .mega h3 { font-size: 1rem; color: var(--steel); font-weight: 600; }
+  .mega ul { list-style: none; padding: 0; margin: 0; }
+  .mega li a { display: block; padding: 10px 0; border-bottom: 1px solid var(--line); text-decoration: none; font-weight: 500; }
+  .mega li a:hover { color: var(--accent); }
+
+  .actions { display: flex; align-items: center; gap: 20px; margin-left: auto; }
+  .tel { display: none; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .cta { display: none; padding: 10px 22px; }
+
+  .burger { width: 44px; height: 44px; background: none; border: 0; display: grid; place-content: center; gap: 6px; cursor: pointer; }
+  .burger span { width: 24px; height: 2px; background: var(--ink); display: block; transition: transform 0.2s; }
+  .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  .drawer { position: fixed; inset: var(--header-h) 0 0; background: var(--white); overflow-y: auto; padding-block: 24px 48px; }
+  .drawer nav > a:not(.btn) { display: block; font-family: var(--display); font-size: 1.6rem; font-weight: 700; padding: 12px 0; text-decoration: none; border-bottom: 1px solid var(--line); }
+  .drawer ul { list-style: none; margin: 0; padding: 4px 0 8px 16px; border-left: 3px solid var(--accent); }
+  .drawer li a { display: block; padding: 8px 0; text-decoration: none; color: var(--steel); }
+  .drawer .btn { margin-top: 28px; }
+
+  @media (min-width: 1080px) {
+    .nav { display: flex; }
+    .actions { margin-left: 0; }
+    .cta { display: inline-flex; }
+    .burger { display: none; }
+    .drawer { display: none; }
+  }
+  @media (min-width: 1280px) { .tel { display: inline; } }
+</style>

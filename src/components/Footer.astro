@@ -1,0 +1,50 @@
+---
+import Logo from "./Logo.astro";
+import { services } from "../data/services";
+import { site } from "../data/site";
+const year = new Date().getFullYear();
+---
+<footer class="ftr">
+  <div class="wrap top">
+    <div class="brand">
+      <Logo light />
+      <p>Servicios integrales de ingeniería y gestión de proyectos para la minería e industria de la zona centro-norte de Chile.</p>
+    </div>
+    <div>
+      <h2>Servicios</h2>
+      <ul>{services.map((s) => <li><a href={`/servicios/${s.slug}`}>{s.name}</a></li>)}</ul>
+    </div>
+    <div>
+      <h2>Empresa</h2>
+      <ul>
+        <li><a href="/nosotros">Nosotros</a></li>
+        <li><a href="/proyectos">Proyectos</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Contacto</h2>
+      <ul>
+        <li>{site.address}</li>
+        <li><a href={site.phoneHref}>{site.phone}</a></li>
+        <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li>Reuniones en {site.offices.join(", ")}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap bottom">
+    <span>© {year} {site.name}. Todos los derechos reservados.</span>
+    <a href="#top">Volver arriba</a>
+  </div>
+</footer>
+<style>
+  .ftr { background: var(--ink); color: #c3cbd1; font-size: 0.95rem; }
+  .top { display: grid; gap: 40px; padding-block: 72px 48px; grid-template-columns: 1fr; }
+  @media (min-width: 800px) { .top { grid-template-columns: 1.4fr 1.3fr 0.8fr 1.3fr; } }
+  .brand p { margin-top: 20px; max-width: 34ch; }
+  h2 { font-size: 1rem; color: var(--white); font-stretch: 105%; margin-bottom: 16px; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  a { text-decoration: none; }
+  a:hover { color: var(--white); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
+  .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 24px 32px; border-top: 1px solid #36434d; font-size: 0.85rem; }
+</style>

@@ -1,0 +1,179 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Icon from "../../components/Icon.astro";
+import ServiceTiles from "../../components/ServiceTiles.astro";
+import ProjectGrid from "../../components/ProjectGrid.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { services, type Service } from "../../data/services";
+import { projects, site } from "../../data/site";
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+
+const { service: s } = Astro.props as { service: Service };
+const related = projects.filter((p) => p.services.includes(s.slug)).slice(0, 2);
+const others = services.filter((o) => o.slug !== s.slug).slice(0, 3);
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: s.name,
+    description: s.summary,
+    serviceType: s.name,
+    provider: { "@type": "ProfessionalService", name: site.name, url: site.url },
+    areaServed: { "@type": "Country", name: "Chile" },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: s.faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  },
+];
+---
+<Layout title={s.seoTitle} description={s.summary} image={s.image} schema={schema}>
+  <PageHero
+    title={s.headline}
+    text={s.summary}
+    image={s.image}
+    alt={s.imageAlt}
+    crumbs={[{ label: "Servicios", href: "/servicios" }, { label: s.name }]}
+  >
+    <div class="cta">
+      <a class="btn" href="#cotizar">Solicitar cotización</a>
+      <a class="btn btn--ghost" href={site.whatsapp} target="_blank" rel="noopener">Hablar por WhatsApp</a>
+    </div>
+  </PageHero>
+
+  <!-- Introducción y datos clave -->
+  <section class="section">
+    <div class="wrap intro">
+      <div>
+        {s.intro.map((p, i) => <p class={i === 0 ? "lead" : undefined}>{p}</p>)}
+      </div>
+      <aside class="facts" aria-label="Datos clave">
+        <dl>
+          <div><dt>Modalidades</dt><dd>EP, EPC y EPCM</dd></div>
+          <div><dt>Sectores</dt><dd>Gran minería e industria</dd></div>
+          <div><dt>Experiencia del equipo</dt><dd>Más de 15 años</dd></div>
+          <div><dt>Reuniones en</dt><dd>{site.offices.join(", ")}</dd></div>
+        </dl>
+        <a class="btn" href="#cotizar">Cotizar este servicio</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Alcance -->
+  <section class="section section--stone">
+    <div class="wrap">
+      <h2>Qué incluye</h2>
+      <ul class="scope">
+        {s.scope.map((it) => (
+          <li>
+            <span class="ic"><Icon name="check" size={26} /></span>
+            <h3>{it.title}</h3>
+            <p>{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Proceso (secuencia real, por eso va numerado) -->
+  <section class="section">
+    <div class="wrap">
+      <h2>Cómo trabajamos</h2>
+      <ol class="steps">
+        {s.process.map((st) => <li><h3>{st.title}</h3><p>{st.text}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Aplicaciones y proyectos -->
+  <section class="section section--ink">
+    <div class="wrap">
+      <div class="apps">
+        <div>
+          <h2>Dónde lo aplicamos</h2>
+          <ul class="applist">{s.applications.map((a) => <li>{a}</li>)}</ul>
+        </div>
+        {related.length > 0 && <ProjectGrid items={related} />}
+      </div>
+    </div>
+  </section>
+
+  <!-- Preguntas frecuentes -->
+  <section class="section">
+    <div class="wrap faq">
+      <h2>Preguntas frecuentes</h2>
+      <div>
+        {s.faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title={`Cotice ${s.name.toLowerCase()} para su proyecto`}
+    text="Cuéntenos el alcance y le enviamos una propuesta técnica y económica."
+    preset={s.slug}
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="head">
+        <h2>Otros servicios</h2>
+        <a class="more" href="/servicios"><span class="dot"><Icon name="arrow" size={18} /></span>Todos los servicios</a>
+      </div>
+      <ServiceTiles items={others} />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+
+  .intro { display: grid; gap: 48px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .intro { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+  .facts { border-top: 6px solid var(--accent); background: var(--stone); padding: 28px; }
+  .facts dl { margin: 0 0 24px; display: grid; gap: 16px; }
+  .facts dt { font-size: 0.85rem; color: var(--steel); }
+  .facts dd { margin: 2px 0 0; font-family: var(--display); font-weight: 600; font-size: 1.15rem; }
+
+  .scope { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .scope { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1100px) { .scope { grid-template-columns: repeat(3, 1fr); } }
+  .scope li { background: var(--white); padding: 30px 28px; }
+  .scope .ic { color: var(--accent); display: block; margin-bottom: 14px; }
+  .scope p { color: var(--steel); margin: 0; font-size: 0.97rem; }
+
+  .steps { list-style: none; counter-reset: step; padding: 0; margin: 40px 0 0; display: grid; gap: 32px; grid-template-columns: 1fr; }
+  @media (min-width: 800px) { .steps { grid-template-columns: repeat(4, 1fr); } }
+  .steps li { counter-increment: step; border-top: 2px solid var(--ink); padding-top: 20px; }
+  .steps li::before { content: counter(step); display: block; font-family: var(--display); font-weight: 800; font-stretch: 120%; font-size: 3rem; line-height: 1; color: var(--accent); margin-bottom: 14px; }
+  .steps p { color: var(--steel); font-size: 0.97rem; }
+
+  .apps { display: grid; gap: 48px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .apps { grid-template-columns: 0.8fr 1.6fr; } }
+  .applist { list-style: none; padding: 0; margin: 24px 0 0; }
+  .applist li { padding: 16px 0 16px 22px; border-bottom: 1px solid #3c4953; position: relative; font-size: 1.05rem; }
+  .applist li::before { content: ""; position: absolute; left: 0; top: 26px; width: 10px; height: 3px; background: var(--accent); }
+
+  .faq { display: grid; gap: 32px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .faq { grid-template-columns: 1fr 1.6fr; } }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 22px 40px 22px 0; font-family: var(--display); font-weight: 600; font-size: 1.15rem; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 4px; top: 16px; font-size: 1.8rem; color: var(--accent); transition: transform 0.2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--steel); padding-bottom: 20px; }
+
+  .head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 44px; }
+  .head h2 { margin: 0; }
+</style>

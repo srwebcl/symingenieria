@@ -1,0 +1,24 @@
+---
+// Íconos de línea simples, dibujados a mano (sin dependencias)
+interface Props { name: string; size?: number }
+const { name, size = 40 } = Astro.props;
+const paths: Record<string, string> = {
+  blueprint: '<rect x="6" y="8" width="36" height="30" rx="1"/><path d="M6 16h36M14 8v30M20 24h14M20 30h9"/>',
+  supply: '<path d="M6 16l18-8 18 8v18l-18 8-18-8z"/><path d="M6 16l18 8 18-8M24 24v18"/>',
+  project: '<rect x="8" y="10" width="32" height="30" rx="1"/><path d="M16 6v8M32 6v8M8 20h32M15 28l5 5 9-10"/>',
+  structure: '<path d="M6 42h36M10 42V18l14-10 14 10v24M10 18h28M17 42V26h14v16M17 26l14 16M31 26L17 42"/>',
+  pipe: '<path d="M4 18h18a8 8 0 0 1 8 8v18M4 28h14a2 2 0 0 1 2 2v14"/><path d="M4 14v18M16 44h18"/>',
+  bolt: '<path d="M27 4L10 27h13l-3 17 18-24H25z"/>',
+  arrow: '<path d="M10 24h28M28 14l10 10-10 10"/>',
+  down: '<path d="M24 10v28M14 28l10 10 10-10"/>',
+  quote: '<path d="M8 36V24c0-8 4-13 12-14M28 36V24c0-8 4-13 12-14"/><path d="M8 26h10v10H8zM28 26h10v10H28z"/>',
+  phone: '<path d="M14 6l6 10-4 4c2 5 6 9 12 12l4-4 10 6-3 7c-17 0-32-15-32-32z"/>',
+  mail: '<rect x="5" y="10" width="38" height="28" rx="1"/><path d="M5 12l19 14 19-14"/>',
+  pin: '<path d="M24 44s14-14 14-24a14 14 0 0 0-28 0c0 10 14 24 14 24z"/><circle cx="24" cy="20" r="5"/>',
+  check: '<path d="M8 25l10 10 22-22"/>',
+  whatsapp: '<path d="M8 40l3-9a16 16 0 1 1 6 6z"/><path d="M18 18c0 7 5 12 12 12l2-4-4-2-2 2c-2-1-4-3-5-5l2-2-2-4z"/>',
+};
+---
+<svg width={size} height={size} viewBox="0 0 48 48" fill="none" stroke="currentColor"
+  stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+  set:html={paths[name] ?? ""} />
