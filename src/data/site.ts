@@ -38,32 +38,35 @@ export type Project = {
   title: string;
   client: string;
   image: string;
+  video?: string;
   services: string[]; // slugs de servicios relacionados
 };
 
 export const projects: Project[] = [
   {
-    title: "Pantallas eólicas para control de polvo, chancador primario N.º 5",
-    client: "Minera Escondida",
-    image: img.eolicas,
-    services: ["ingenieria-civil-estructural", "ingenieria-conceptual-basica-detalle", "gestion-de-proyectos-epcm"],
-  },
-  {
-    title: "Instalación de filtros cerámicos desaguadores",
-    client: "CAP Minería",
-    image: img.desaguadores,
-    services: ["ingenieria-mecanica-piping", "ingenieria-civil-estructural", "gestion-de-abastecimiento"],
-  },
-  {
     title: "Concentración magnética seca en HSD, planta CNN",
     client: "CAP Minería",
-    image: img.hsd,
+    image: "/img/proyectos/galpon.png",
+    video: "/videos/separacion-magnetica.mp4",
     services: ["ingenieria-mecanica-piping", "ingenieria-electrica-instrumentacion", "ingenieria-conceptual-basica-detalle"],
   },
   {
-    title: "Embarcadero Club de Yates",
-    client: "La Herradura, Coquimbo",
-    image: img.embarcadero,
+    title: "Filtros cerámicos de concentrado",
+    client: "Lux Mining",
+    image: "/img/proyectos/filtro.png",
+    video: "/videos/filtro-concentrado.mp4",
+    services: ["ingenieria-mecanica-piping", "ingenieria-civil-estructural", "gestion-de-abastecimiento"],
+  },
+  {
+    title: "Mejoras en molino y alimentación mediante bandas",
+    client: "Minera Privada",
+    image: "/img/proyectos/molino.png",
+    services: ["ingenieria-civil-estructural", "ingenieria-conceptual-basica-detalle"],
+  },
+  {
+    title: "Estructura isométrica para pilón",
+    client: "Industria Minera",
+    image: "/img/proyectos/pilon.png",
     services: ["ingenieria-civil-estructural", "gestion-de-proyectos-epcm"],
   },
 ];

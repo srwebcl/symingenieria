@@ -11,7 +11,7 @@ const disc = services.filter((s) => s.group === "disciplina");
 ---
 <header class="hdr">
   <div class="wrap bar">
-    <Logo />
+    <Logo light />
     <nav class="nav" aria-label="Principal">
       <a href="/" aria-current={isActive("/") ? "page" : undefined}>Inicio</a>
       <a href="/nosotros" aria-current={isActive("/nosotros") ? "page" : undefined}>Nosotros</a>
@@ -88,15 +88,15 @@ const disc = services.filter((s) => s.group === "disciplina");
 </script>
 
 <style>
-  .hdr { position: sticky; top: 0; z-index: 50; background: var(--white); border-bottom: 1px solid var(--line); }
+  .hdr { position: sticky; top: 0; z-index: 50; background: var(--corporate-blue); border-bottom: 1px solid var(--corporate-blue); }
   .bar { height: var(--header-h); display: flex; align-items: center; gap: 32px; }
   .nav { display: none; gap: 30px; margin-left: auto; align-items: center; }
   .nav > a, .mega-btn {
-    font-family: var(--display); font-weight: 600; font-size: 1rem; text-decoration: none; color: var(--ink);
+    font-family: var(--display); font-weight: 600; font-size: 1rem; text-decoration: none; color: var(--white);
     background: none; border: 0; padding: 26px 0; cursor: pointer; display: inline-flex; gap: 6px; align-items: center;
     border-bottom: 3px solid transparent;
   }
-  .nav > a:hover, .mega-btn:hover { color: var(--accent); }
+  .nav > a:hover, .mega-btn:hover { color: var(--stone); }
   .nav > a[aria-current="page"], .mega-btn[data-active] { border-bottom-color: var(--accent); }
   .mega-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
 
@@ -109,11 +109,11 @@ const disc = services.filter((s) => s.group === "disciplina");
   .mega li a:hover { color: var(--accent); }
 
   .actions { display: flex; align-items: center; gap: 20px; margin-left: auto; }
-  .tel { display: none; text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+  .tel { display: none; text-decoration: none; font-weight: 600; font-size: 0.95rem; color: var(--white); }
   .cta { display: none; padding: 10px 22px; }
 
   .burger { width: 44px; height: 44px; background: none; border: 0; display: grid; place-content: center; gap: 6px; cursor: pointer; }
-  .burger span { width: 24px; height: 2px; background: var(--ink); display: block; transition: transform 0.2s; }
+  .burger span { width: 24px; height: 2px; background: var(--white); display: block; transition: transform 0.2s; }
   .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
   .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }

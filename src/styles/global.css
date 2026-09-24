@@ -6,8 +6,10 @@
   --steel: #56636d;
   --stone: #eef0f1;
   --line: #d5dadd;
-  --accent: #e35205;
-  --accent-dark: #b84103;
+  --accent: #911B22;
+  --accent-dark: #6e1319;
+  --corporate-blue: #166396;
+  --light-blue: #558DC7;
 
   --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
   --body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
@@ -98,4 +100,4 @@ p { margin: 0 0 1em; max-width: 68ch; }
 @media (min-width: 900px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
 
 .ratio { aspect-ratio: 4 / 3; overflow: hidden; background: var(--stone); }
-.ratio img { width: 100%; height: 100%; object-fit: cover; }
+.ratio img, .ratio video { width: 100%; height: 100%; object-fit: cover; }
