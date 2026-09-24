@@ -8,25 +8,50 @@ const { items } = Astro.props;
 <ul class="tiles">
   {items.map((s) => (
     <li>
-      <a href={`/servicios/${s.slug}`}>
+      <a href={`/especialidades/${s.slug}`} class="tile-card">
         <span class="ic"><Icon name={s.icon} size={44} /></span>
         <h3>{s.name}</h3>
         <p>{s.summary}</p>
-        <span class="go"><Icon name="arrow" size={22} /></span>
+        <span class="go"><Icon name="arrow" size={24} /></span>
       </a>
     </li>
   ))}
 </ul>
 <style>
-  .tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); grid-template-columns: 1fr; }
+  .tiles { 
+    list-style: none; margin: 0; padding: 0; 
+    display: grid; gap: 24px; 
+    grid-template-columns: 1fr; 
+  }
   @media (min-width: 700px) { .tiles { grid-template-columns: 1fr 1fr; } }
   @media (min-width: 1100px) { .tiles { grid-template-columns: repeat(3, 1fr); } }
-  .tiles a { position: relative; display: flex; flex-direction: column; height: 100%; padding: 36px 32px 76px; background: var(--white); text-decoration: none; transition: background 0.2s, color 0.2s; }
-  .ic { color: var(--accent); margin-bottom: 22px; }
-  h3 { margin-bottom: 10px; }
-  p { color: var(--steel); font-size: 0.97rem; margin: 0; }
-  .go { position: absolute; left: 32px; bottom: 28px; color: var(--accent); transition: transform 0.2s; }
-  .tiles a:hover { background: var(--ink); color: var(--white); }
-  .tiles a:hover p { color: #c3cbd1; }
-  .tiles a:hover .go { transform: translateX(6px); }
+  
+  .tile-card { 
+    position: relative; display: flex; flex-direction: column; height: 100%; 
+    padding: 40px 32px 80px; 
+    background: var(--white); text-decoration: none; 
+    border: 1px solid var(--line); border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-base); 
+  }
+  
+  .ic { color: var(--accent); margin-bottom: 24px; transition: var(--transition-base); display: inline-block; }
+  h3 { margin-bottom: 12px; transition: var(--transition-base); }
+  p { color: var(--steel); margin: 0; transition: var(--transition-base); }
+  
+  .go { 
+    position: absolute; left: 32px; bottom: 32px; 
+    color: var(--accent); opacity: 0.8;
+    transition: var(--transition-base); 
+  }
+  
+  .tile-card:hover { 
+    background: var(--ink); border-color: var(--ink);
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg); 
+  }
+  .tile-card:hover h3 { color: var(--white); }
+  .tile-card:hover p { color: #94A3B8; }
+  .tile-card:hover .ic { transform: scale(1.1); color: var(--white); }
+  .tile-card:hover .go { transform: translateX(8px); opacity: 1; color: var(--white); }
 </style>

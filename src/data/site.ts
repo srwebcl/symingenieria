@@ -1,25 +1,21 @@
 // Datos corporativos centralizados. Editar aquí actualiza todo el sitio.
 
 export const site = {
-  name: "S&M Ingeniería SpA",
+  name: "S&M Ingeniería y Construcción SpA",
   shortName: "S&M Ingeniería",
   url: "https://www.sym-ingenieria.cl",
   description:
-    "Ingeniería conceptual, básica y de detalle, gestión de abastecimiento y gestión de proyectos EP, EPC y EPCM para la minería e industria de la zona centro-norte de Chile.",
+    "Ingeniería, suministro, construcción y montaje para plantas mineras e industriales. Proyectos Greenfield y Brownfield desde La Serena.",
   phone: "+56 9 9542 0676",
   phoneHref: "tel:+56995420676",
   whatsapp: "https://wa.me/56995420676",
   email: "contacto@sym-ingenieria.cl",
   address: "Balmaceda 1625, Oficina 32, La Serena, Región de Coquimbo",
   offices: ["La Serena", "Calama", "Santiago"],
-  // Endpoint del formulario. Crear uno gratis en formspree.io o web3forms.com
-  // y definir PUBLIC_FORM_ENDPOINT en Vercel (Settings → Environment Variables).
   formEndpoint:
     import.meta.env.PUBLIC_FORM_ENDPOINT ?? "https://formspree.io/f/REEMPLAZAR",
 };
 
-// Imágenes del sitio actual. Recomendado: descargarlas a /public/img/
-// y reemplazar estas URLs por rutas locales ("/img/pa-01.jpg").
 const wp = "https://www.sym-ingenieria.cl/wp-content/uploads";
 export const img = {
   hero: `${wp}/2019/05/pexels-photo-416405-1024x640.jpeg`,
@@ -39,34 +35,42 @@ export type Project = {
   client: string;
   image: string;
   video?: string;
-  services: string[]; // slugs de servicios relacionados
+  services: string[]; // slugs de servicios (especialidades) relacionados
 };
 
 export const projects: Project[] = [
   {
-    title: "Concentración magnética seca en HSD, planta CNN",
-    client: "CAP Minería",
+    title: "Recuperación de agua y minerales de hierro",
+    client: "Cía. Minera San Gerónimo (Planta Talcuna)",
     image: "/img/proyectos/galpon.png",
-    video: "/videos/separacion-magnetica.mp4",
-    services: ["ingenieria-mecanica-piping", "ingenieria-electrica-instrumentacion", "ingenieria-conceptual-basica-detalle"],
+    services: [
+      "obras-civiles-y-arquitectura",
+      "estructuras-y-caldereria",
+      "montaje-mecanico-y-procesos",
+      "piping",
+    ],
   },
   {
-    title: "Filtros cerámicos de concentrado",
-    client: "Lux Mining",
+    title: "Ingeniería básica avanzada de filtrado de relaves",
+    client: "Minera Los Pelambres (Antofagasta Minerals)",
     image: "/img/proyectos/filtro.png",
-    video: "/videos/filtro-concentrado.mp4",
-    services: ["ingenieria-mecanica-piping", "ingenieria-civil-estructural", "gestion-de-abastecimiento"],
+    services: [
+      "obras-civiles-y-arquitectura",
+      "estructuras-y-caldereria",
+      "montaje-mecanico-y-procesos",
+      "piping",
+    ],
   },
   {
-    title: "Mejoras en molino y alimentación mediante bandas",
-    client: "Minera Privada",
+    title: "Obras de arte N°4 y N°5 del camino de acceso a la dársena",
+    client: "Puerto Cruz Grande (CMP)",
     image: "/img/proyectos/molino.png",
-    services: ["ingenieria-civil-estructural", "ingenieria-conceptual-basica-detalle"],
+    services: ["obras-civiles-y-arquitectura"],
   },
   {
-    title: "Estructura isométrica para pilón",
-    client: "Industria Minera",
+    title: "Sostenimiento de muro de contención y cierre estructural",
+    client: "Poder de Compra Guayacán (ENAMI)",
     image: "/img/proyectos/pilon.png",
-    services: ["ingenieria-civil-estructural", "gestion-de-proyectos-epcm"],
+    services: ["obras-civiles-y-arquitectura"],
   },
 ];

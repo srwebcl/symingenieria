@@ -1,0 +1,34 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import ServiceTiles from "../../components/ServiceTiles.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { services } from "../../data/services";
+import { img } from "../../data/site";
+---
+<Layout title="Especialidades en ingeniería, construcción y montaje minero | S&M" description="Obras civiles, estructuras y calderería, montaje mecánico, piping, inspección y permisos para plantas mineras e industriales.">
+  <PageHero
+    title="Nuestras especialidades"
+    text="Cinco especialidades que cubren un proyecto minero o industrial completo. Puede contratarnos para el proyecto integral o para una especialidad específica."
+    image={img.foto4}
+    crumbs={[{ label: "Especialidades" }]}
+  />
+  <section class="section">
+    <div class="wrap">
+      <ServiceTiles items={services} />
+    </div>
+  </section>
+  <section class="section section--stone">
+    <div class="wrap orientacion">
+      <h2>¿Aún no define el alcance?</h2>
+      <p class="lead">Podemos comenzar con una inspección técnica o una evaluación del proceso para definir la solución correcta antes de invertir.</p>
+      <a class="btn" href="/contacto">Solicitar evaluación técnica</a>
+    </div>
+  </section>
+  <CtaBand />
+</Layout>
+<style>
+  .orientacion { text-align: center; max-width: 600px; margin: 0 auto; }
+  .orientacion h2 { margin-bottom: 16px; }
+  .orientacion p { margin-bottom: 24px; color: var(--steel); }
+</style>

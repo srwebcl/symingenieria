@@ -1,0 +1,135 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Icon from "../../components/Icon.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { img } from "../../data/site";
+---
+<Layout title="Fabricación y montaje de estructuras y calderería minera | S&M" description="Ingeniería, fabricación y montaje de estructuras pesadas, silos, tolvas, estanques, chutes, parrillas y barandas para plantas mineras.">
+  <PageHero
+    title="Ingeniería, Fabricación y Montaje de Estructuras de Edificios y Calderería"
+    text="Diseñamos, fabricamos y montamos estructuras pesadas, medianas y livianas, y elementos de calderería para plantas mineras."
+    image={img.foto2}
+    crumbs={[{ label: "Especialidades", href: "/especialidades" }, { label: "Estructuras y Calderería" }]}
+  >
+    <div class="cta">
+      <a class="btn" href="/contacto">Cotizar estructuras</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap intro">
+      <div>
+        <h2>Del plano a la pieza montada, con un solo responsable</h2>
+        <p class="lead">Cuando la ingeniería, la fabricación y el montaje dependen de un mismo equipo, las piezas llegan a terreno en el orden correcto y se ajustan a la ingeniería aprobada. Desarrollamos la ingeniería de fabricación, fabricamos en taller y montamos en faena.</p>
+      </div>
+      <aside class="facts" aria-label="Datos clave">
+        <h3>Por qué S&M</h3>
+        <ul>
+          <li><strong>Ingeniería de fabricación propia:</strong> planos de taller desarrollados a partir de la ingeniería de detalles.</li>
+          <li><strong>Estructura y calderería en un mismo proveedor:</strong> soportes, galpones, estanques y cajones en un solo paquete.</li>
+          <li><strong>Engomado interior:</strong> estanques y cajones con revestimiento para el manejo de pulpa.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--stone">
+    <div class="wrap">
+      <h2>Qué incluye esta especialidad</h2>
+      <ul class="scope">
+        <li>
+          <span class="ic"><Icon name="check" size={26} /></span>
+          <h3>Estructura pesada</h3>
+          <p>Edificios de plantas y correas transportadoras.</p>
+        </li>
+        <li>
+          <span class="ic"><Icon name="check" size={26} /></span>
+          <h3>Estructura mediana</h3>
+          <p>Silos y tolvas de almacenamiento, estanques de almacenamiento, y chutes de carga y descarga.</p>
+        </li>
+        <li>
+          <span class="ic"><Icon name="check" size={26} /></span>
+          <h3>Estructura liviana</h3>
+          <p>Soportes metálicos de cañerías, parrillas de piso, guarderas, escaleras y barandas.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="wrap projects">
+      <h2>Estructuras y calderería suministradas</h2>
+      <ul>
+        <li><strong>Ingeniería y suministro de estructura para planta de filtrado.</strong> Minera Los Pelambres, vía Spin Technologies, jul 2024 – mar 2025.
+          <ul class="sub">
+            <li>Ingeniería estructural, mecánica y de iluminación del edificio de la planta de filtro.</li>
+            <li>Planos de fabricación y memorias de cálculo de estanque agitador de 40 m³, estanque de recuperación de agua de 20 m³, estanque alimentador de pulpa de 1,3 m³ y estanque amortiguador.</li>
+            <li>Suministro de 53,4 t de estructura de edificio y cubiertas de galpón, estanque agitador engomado, estanque de agua filtrada, cajón alimentador y cajón amortiguador engomado.</li>
+          </ul>
+        </li>
+        <li><strong>Fabricación y montaje de alimentador de correa</strong> para el molino 3. Planta Talcuna – Cía. Minera San Gerónimo, mar – abr 2026.</li>
+        <li><strong>Estructura nueva para planta de filtrado:</strong> soporte de equipos, escalera de acceso y plataforma del estanque acumulador de aire. Planta Talcuna, jun – sep 2024.</li>
+        <li><strong>Galpón de estructura metálica de 5 t</strong> con cubierta de zinc para la sala de reactivos. Planta Delta – ENAMI, dic 2023 – mar 2024.</li>
+        <li><strong>Ingeniería de modificación estructural para cambio de harnero:</strong> planos de fabricación y montaje, informe de abastecimiento y procedimiento de ejecución. Cía. Minera San Gerónimo, mar – abr 2022.</li>
+        <li><strong>Recuperación de espesador 18' × 12':</strong> planos de fabricación de la plataforma, modificación de rastra y supervisión del montaje estructural. Cía. Minera San Gerónimo, dic 2021 – ene 2022.</li>
+        <li><strong>Instalaciones modulares tipo baño doble con rampa de acceso.</strong> ENAMI, may – jul 2025.</li>
+      </ul>
+      <a class="btn btn--ghost mt" href="/proyectos">Ver todos los proyectos</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap faq">
+      <h2>Preguntas frecuentes</h2>
+      <div>
+        <details>
+          <summary>¿Desarrollan la ingeniería de fabricación?</summary>
+          <p>Sí. La desarrollamos a partir de la ingeniería de detalles, propia o del cliente.</p>
+        </details>
+        <details>
+          <summary>¿Fabrican estanques con revestimiento interior?</summary>
+          <p>Sí. Suministramos estanques y cajones con engomado interior para pulpa.</p>
+        </details>
+        <details>
+          <summary>¿Pueden entregar solo el suministro, sin montaje?</summary>
+          <p>Sí. Entregamos suministro, suministro con asesoría de montaje, o suministro y montaje completo.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Estructuras que llegan listas para montar" text="Cuéntenos el alcance y le enviamos una propuesta técnica y económica." preset="Estructuras y Calderería" />
+</Layout>
+
+<style>
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+  .intro { display: grid; gap: 48px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .intro { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+  .facts { border-top: 6px solid var(--accent); background: var(--stone); padding: 28px; }
+  .facts h3 { margin-bottom: 16px; font-size: 1.2rem; }
+  .facts ul { padding-left: 20px; color: var(--steel); display: grid; gap: 12px; }
+  
+  .scope { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .scope { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1100px) { .scope { grid-template-columns: repeat(3, 1fr); } }
+  .scope li { background: var(--white); padding: 30px 28px; }
+  .scope .ic { color: var(--accent); display: block; margin-bottom: 14px; }
+  .scope p { color: var(--steel); margin: 0; font-size: 0.97rem; }
+  
+  .projects { display: grid; gap: 32px; color: #c3cbd1; }
+  .projects h2 { color: white; margin-bottom: 10px; }
+  .projects ul { padding-left: 20px; display: grid; gap: 12px; font-size: 1.05rem; }
+  .projects ul.sub { padding-left: 24px; margin-top: 8px; font-size: 1rem; color: #a4afb8; }
+  .projects li strong { color: white; }
+  .mt { margin-top: 16px; justify-self: start; }
+
+  .faq { display: grid; gap: 32px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .faq { grid-template-columns: 1fr 1.6fr; } }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 22px 40px 22px 0; font-family: var(--display); font-weight: 600; font-size: 1.15rem; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 4px; top: 16px; font-size: 1.8rem; color: var(--accent); transition: transform 0.2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--steel); padding-bottom: 20px; }
+</style>

@@ -8,16 +8,18 @@ const year = new Date().getFullYear();
   <div class="wrap top">
     <div class="brand">
       <Logo light />
-      <p>Servicios integrales de ingeniería y gestión de proyectos para la minería e industria de la zona centro-norte de Chile.</p>
+      <p class="lema">Construyendo futuro con eficiencia.</p>
+      <p>Empresa de ingeniería y construcción nacida en la Región de Coquimbo, orientada a resolver problemáticas de la industria minera.</p>
     </div>
     <div>
-      <h2>Servicios</h2>
-      <ul>{services.map((s) => <li><a href={`/servicios/${s.slug}`}>{s.name}</a></li>)}</ul>
+      <h2>Especialidades</h2>
+      <ul>{services.map((s) => <li><a href={`/especialidades/${s.slug}`}>{s.name}</a></li>)}</ul>
     </div>
     <div>
       <h2>Empresa</h2>
       <ul>
         <li><a href="/nosotros">Nosotros</a></li>
+        <li><a href="/soluciones-mineria">Soluciones</a></li>
         <li><a href="/proyectos">Proyectos</a></li>
         <li><a href="/contacto">Contacto</a></li>
       </ul>
@@ -32,19 +34,47 @@ const year = new Date().getFullYear();
       </ul>
     </div>
   </div>
+  <div class="wrap provider">
+    <p><strong>Proveedor registrado:</strong> Red Negocios CCS · SICEP · SAP Ariba · RyCE · Espacio Industrial Minero · ChileCompra Mercado Público · Wherex</p>
+  </div>
   <div class="wrap bottom">
-    <span>© {year} {site.name}. Todos los derechos reservados.</span>
-    <a href="#top">Volver arriba</a>
+    <span>© {year} {site.name}. <a href="/politica-de-privacidad">Política de privacidad</a></span>
+    <a href="#top" class="to-top">Volver arriba</a>
   </div>
 </footer>
 <style>
-  .ftr { background: var(--ink); color: #c3cbd1; font-size: 0.95rem; }
-  .top { display: grid; gap: 40px; padding-block: 72px 48px; grid-template-columns: 1fr; }
-  @media (min-width: 800px) { .top { grid-template-columns: 1.4fr 1.3fr 0.8fr 1.3fr; } }
-  .brand p { margin-top: 20px; max-width: 34ch; }
-  h2 { font-size: 1rem; color: var(--white); font-stretch: 105%; margin-bottom: 16px; }
-  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
-  a { text-decoration: none; }
-  a:hover { color: var(--white); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 4px; }
-  .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-block: 24px 32px; border-top: 1px solid #36434d; font-size: 0.85rem; }
+  .ftr { background: var(--ink); color: #94A3B8; /* Slate 400 */ font-size: 0.95rem; }
+  .top { display: grid; gap: 48px; padding-block: 80px 56px; grid-template-columns: 1fr; }
+  @media (min-width: 800px) { .top { grid-template-columns: 1.4fr 1.3fr 0.8fr 1.3fr; gap: clamp(32px, 4vw, 64px); } }
+  
+  .brand .lema { font-weight: 700; color: var(--white); margin-top: 24px; margin-bottom: 8px; font-size: 1.05rem; letter-spacing: -0.01em; }
+  .brand p { max-width: 34ch; margin: 0; line-height: 1.6; }
+  
+  h2 { font-size: 1.05rem; color: var(--white); font-stretch: 105%; margin-bottom: 20px; letter-spacing: 0; }
+  
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  a { text-decoration: none; color: inherit; transition: var(--transition-base); }
+  a:hover { color: var(--white); }
+  
+  /* Link with underline animation on hover */
+  ul a { position: relative; display: inline-block; }
+  ul a::after {
+    content: ''; position: absolute; width: 0; height: 1px; bottom: -2px; left: 0;
+    background-color: var(--accent); transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  ul a:hover::after { width: 100%; }
+
+  .provider { padding-bottom: 32px; font-size: 0.85rem; color: #64748B; /* Slate 500 */ }
+  .provider strong { color: #E2E8F0; /* Slate 200 */ font-weight: 600; }
+  
+  .bottom { 
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; 
+    padding-block: 24px 32px; 
+    border-top: 1px solid rgba(255, 255, 255, 0.08); 
+    font-size: 0.85rem; color: #64748B;
+  }
+  .bottom a { margin-left: 10px; color: #94A3B8; }
+  .bottom a:hover { color: var(--white); }
+  
+  .to-top { font-weight: 600; }
 </style>

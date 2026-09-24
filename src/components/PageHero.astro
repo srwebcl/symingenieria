@@ -19,13 +19,31 @@ const { title, text, image, alt = "", crumbs = [] } = Astro.props;
   </div>
 </section>
 <style>
-  .ph { position: relative; min-height: clamp(420px, 62vh, 620px); display: flex; align-items: flex-end; color: var(--white); overflow: hidden; background: var(--ink); }
-  .ph > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(31,42,51,0.9) 0%, rgba(31,42,51,0.6) 55%, rgba(31,42,51,0.2) 100%); }
-  .in { position: relative; padding-block: 56px clamp(48px, 7vw, 88px); }
-  h1 { max-width: 20ch; }
-  .lead { color: #dde3e7; max-width: 56ch; }
-  .crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.9rem; margin-bottom: 24px; color: #c3cbd1; }
-  .crumbs a { text-decoration: none; }
-  .crumbs a:hover { text-decoration: underline; }
+  .ph { 
+    position: relative; min-height: clamp(480px, 62vh, 680px); 
+    display: flex; align-items: flex-end; 
+    color: var(--white); overflow: hidden; background: var(--ink); 
+  }
+  .ph > img { 
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; 
+    animation: zoomOut 1.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  .shade { 
+    position: absolute; inset: 0; 
+    background: linear-gradient(to top, var(--ink) 0%, rgba(15, 23, 42, 0.5) 60%, rgba(15, 23, 42, 0.1) 100%); 
+  }
+  .in { 
+    position: relative; padding-block: 64px clamp(56px, 8vw, 104px); 
+    animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+  }
+  h1 { max-width: 22ch; color: var(--white); margin-bottom: 0.3em; }
+  .lead { color: #CBD5E1; /* Slate 300 */ max-width: 60ch; }
+  
+  .crumbs { display: flex; flex-wrap: wrap; gap: 10px; font-size: 0.95rem; margin-bottom: 24px; color: #94A3B8; font-weight: 500; }
+  .crumbs a { text-decoration: none; transition: var(--transition-base); }
+  .crumbs a:hover { color: var(--white); }
+  .crumbs span[aria-current="page"] { color: var(--white); }
+
+  @keyframes zoomOut { from { transform: scale(1.08); } to { transform: scale(1); } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 </style>

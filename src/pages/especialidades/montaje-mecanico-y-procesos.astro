@@ -1,0 +1,128 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Icon from "../../components/Icon.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { img } from "../../data/site";
+---
+<Layout title="Montaje de equipos mecánicos y de procesos mineros | S&M" description="Montaje de equipos de chancado, molienda, concentración magnética, filtrado, espesamiento, correas transportadoras y bombas de pulpa.">
+  <PageHero
+    title="Montaje de Equipos Mecánicos y de Procesos"
+    text="Montamos equipos de chancado, molienda, concentración, filtrado, espesamiento y transporte de minerales, listos para su puesta en marcha."
+    image={img.foto3}
+    crumbs={[{ label: "Especialidades", href: "/especialidades" }, { label: "Montaje Mecánico y de Procesos" }]}
+  >
+    <div class="cta">
+      <a class="btn" href="/contacto">Cotizar montaje</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap intro">
+      <div>
+        <h2>Montajes en plantas que no pueden detenerse</h2>
+        <p class="lead">Montar o reemplazar un equipo en una planta en operación exige planificar maniobras, coordinar con la operación y cuidar la seguridad. Tenemos experiencia en desmontajes, montajes y puestas en marcha dentro de plantas concentradoras activas.</p>
+      </div>
+      <aside class="facts" aria-label="Datos clave">
+        <h3>Por qué S&M</h3>
+        <ul>
+          <li><strong>Montaje con ingeniería:</strong> entendemos el proceso, no solo la maniobra; diseñamos plataformas, soportes y ajustes de los equipos que montamos.</li>
+          <li><strong>Experiencia en filtrado y concentración magnética:</strong> filtros cerámicos, de tela y tambores magnéticos en proyectos de cobre y hierro.</li>
+          <li><strong>Hasta la puesta en marcha:</strong> incluimos montaje eléctrico e instrumentación cuando el proyecto lo requiere.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--stone">
+    <div class="wrap">
+      <h2>Qué incluye esta especialidad</h2>
+      <ul class="scope">
+        <li>
+          <span class="ic"><Icon name="check" size={26} /></span>
+          <h3>Plantas de proceso</h3>
+          <p>Chancado secundario y terciario; molienda; concentración magnética en húmedo y en seco; filtrado con equipos cerámicos y de tela, con recuperación de agua; espesamiento y agitación de pulpa.</p>
+        </li>
+        <li>
+          <span class="ic"><Icon name="check" size={26} /></span>
+          <h3>Transporte de minerales</h3>
+          <p>Correas transportadoras, alimentadores de correa, alimentadores vibratorios y harneros.</p>
+        </li>
+        <li>
+          <span class="ic"><Icon name="check" size={26} /></span>
+          <h3>Sistemas de impulsión</h3>
+          <p>Bombas de pulpa y agua.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="wrap projects">
+      <h2>Montajes ejecutados</h2>
+      <ul>
+        <li><strong>Reemplazo de filtro prensa por filtro cerámico BMP de 21 m².</strong> Desmontaje del galpón, del filtro prensa y de sus líneas; montaje de estructura nueva, filtro cerámico, bomba de vacío y estanque acumulador de aire; soporte a la puesta en marcha hasta su funcionamiento. Planta Talcuna – Cía. Minera San Gerónimo, jun – sep 2024.</li>
+        <li><strong>Mejoramiento de alimentación a correas transportadoras del molino 3:</strong> ingeniería de detalles, fabricación del alimentador y montaje en faena. Planta Talcuna, mar – abr 2026.</li>
+        <li><strong>Laboratorio metalúrgico:</strong> montaje de chancador de mandíbula, 2 Gyroll, compresor, equipos de pulverización y extractores de aire; suministro y montaje de generador de 44 kVA. Planta Delta – ENAMI, dic 2023 – mar 2024.</li>
+        <li><strong>Pilón de agua fresca:</strong> montaje de bomba de 60 m³/h y tendido subterráneo de 100 m de cable. Planta Delta – ENAMI, dic 2022 – feb 2023.</li>
+        <li><strong>Ingeniería para mejorar la operación del molino 9' × 12':</strong> chute con válvulas de aguja, alimentador de banda, rediseño del spout feeder, harnero trommel y cajón sumidero. Cía. Minera San Gerónimo, ago 2022.</li>
+        <li><strong>Recuperación de espesador de concentrado 18' × 12':</strong> ingeniería, abastecimiento y supervisión de montaje. Cía. Minera San Gerónimo, dic 2021 – ene 2022.</li>
+        <li><strong>Ingeniería de filtros desaguadores</strong> para la planta de concentración magnética: memorias de cálculo, especificaciones técnicas y planos de fabricación y montaje. Planta Magnetita – CAP Minería, vía IP Industrial, oct 2019 – ago 2020.</li>
+      </ul>
+      <a class="btn btn--ghost mt" href="/proyectos">Ver todos los proyectos</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap faq">
+      <h2>Preguntas frecuentes</h2>
+      <div>
+        <details>
+          <summary>¿Montan filtros cerámicos y de tela?</summary>
+          <p>Sí. Hemos montado filtros cerámicos y desarrollado ingeniería de plantas de filtrado con placas de tela.</p>
+        </details>
+        <details>
+          <summary>¿Realizan el desmontaje de los equipos existentes?</summary>
+          <p>Sí. Desmontamos equipos, estructuras y galpones antes del montaje nuevo.</p>
+        </details>
+        <details>
+          <summary>¿Acompañan la puesta en marcha?</summary>
+          <p>Sí. En el filtro cerámico de Planta Talcuna dimos soporte a la puesta en marcha hasta su funcionamiento, y en la planta de recuperación de hierro gestionamos la construcción hasta la entrega del proyecto.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Montajes planificados, ejecutados con seguridad" text="Cuéntenos el alcance y le enviamos una propuesta técnica y económica." preset="Montaje Mecánico y de Procesos" />
+</Layout>
+
+<style>
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+  .intro { display: grid; gap: 48px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .intro { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+  .facts { border-top: 6px solid var(--accent); background: var(--stone); padding: 28px; }
+  .facts h3 { margin-bottom: 16px; font-size: 1.2rem; }
+  .facts ul { padding-left: 20px; color: var(--steel); display: grid; gap: 12px; }
+  
+  .scope { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .scope { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1100px) { .scope { grid-template-columns: repeat(3, 1fr); } }
+  .scope li { background: var(--white); padding: 30px 28px; }
+  .scope .ic { color: var(--accent); display: block; margin-bottom: 14px; }
+  .scope p { color: var(--steel); margin: 0; font-size: 0.97rem; }
+  
+  .projects { display: grid; gap: 32px; color: #c3cbd1; }
+  .projects h2 { color: white; margin-bottom: 10px; }
+  .projects ul { padding-left: 20px; display: grid; gap: 12px; font-size: 1.05rem; }
+  .projects li strong { color: white; }
+  .mt { margin-top: 16px; justify-self: start; }
+
+  .faq { display: grid; gap: 32px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .faq { grid-template-columns: 1fr 1.6fr; } }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 22px 40px 22px 0; font-family: var(--display); font-weight: 600; font-size: 1.15rem; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 4px; top: 16px; font-size: 1.8rem; color: var(--accent); transition: transform 0.2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--steel); padding-bottom: 20px; }
+</style>

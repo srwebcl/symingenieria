@@ -1,19 +1,76 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
-import ProjectGrid from "../components/ProjectGrid.astro";
 import CtaBand from "../components/CtaBand.astro";
-import { img, projects } from "../data/site";
+import { img } from "../data/site";
+
+const allProjects = [
+  { title: "Servicios de ingeniería, obras hidráulicas y obras civiles menores", client: "Cía. Minera San Gerónimo", date: "abr – jul 2026", area: "Ingeniería · Construcción", tags: ["Obras Civiles", "Piping"] },
+  { title: "Mejoramiento de alimentación a correas transportadoras del molino 3", client: "Planta Talcuna – Cía. Minera San Gerónimo", date: "mar – abr 2026", area: "Ingeniería · Suministro · Montaje", tags: ["Estructuras", "Montaje Mecánico"] },
+  { title: "Ingeniería de líneas de emergencia del sistema de filtrado", client: "Planta Talcuna – Cía. Minera San Gerónimo", date: "feb – abr 2026", area: "Ingeniería", tags: ["Piping"] },
+  { title: "Nuevo diseño del pipeline de agua de sello", client: "Planta Talcuna – Cía. Minera San Gerónimo", date: "desde nov 2025", area: "Ingeniería", tags: ["Piping"] },
+  { title: "Sostenimiento de muro de contención y cierre estructural", client: "Poder de Compra Guayacán – ENAMI", date: "nov 2025 – feb 2026", area: "Construcción", tags: ["Obras Civiles"] },
+  { title: "Ingeniería básica avanzada de filtrado de relaves", client: "Minera Los Pelambres (Antofagasta Minerals)", date: "sep 2025 – ene 2026", area: "Ingeniería", tags: ["Obras Civiles", "Estructuras", "Montaje Mecánico", "Piping"] },
+  { title: "Nuevo diseño del pipeline de aguas de proceso del sector molienda", client: "Planta Talcuna – Cía. Minera San Gerónimo", date: "desde ago 2025", area: "Ingeniería", tags: ["Piping"] },
+  { title: "Instalaciones modulares tipo baño doble con rampa de acceso", client: "ENAMI", date: "may – jul 2025", area: "Construcción", tags: ["Estructuras"] },
+  { title: "Ingeniería y suministro de estructura para planta de filtrado", client: "Minera Los Pelambres (Spin Technologies)", date: "jul 2024 – mar 2025", area: "Ingeniería · Suministro", tags: ["Estructuras", "Piping"] },
+  { title: "Reemplazo de filtro prensa por filtro cerámico BMP de 21 m²", client: "Planta Talcuna – Cía. Minera San Gerónimo", date: "jun – sep 2024", area: "Montaje", tags: ["Montaje Mecánico"] },
+  { title: "Obras de arte N°4 y N°5 del camino de acceso a la dársena", client: "Puerto Cruz Grande – CMP", date: "dic 2024 – mar 2025", area: "Construcción", tags: ["Obras Civiles"] },
+  { title: "Laboratorio metalúrgico", client: "Planta Delta – ENAMI", date: "dic 2023 – mar 2024", area: "Montaje", tags: ["Obras Civiles", "Montaje Mecánico"] },
+  { title: "Galpón para sala de reactivos de flotación", client: "Planta Delta – ENAMI", date: "dic 2023 – mar 2024", area: "Construcción", tags: ["Obras Civiles", "Estructuras"] },
+  { title: "Inspección técnica del estado estructural de plantas", client: "Minera Caserones (SCM Minera Lumina Copper Chile)", date: "dic 2023 – ene 2024", area: "Inspección", tags: ["Administración e Inspección"] },
+  { title: "Elaboración y tramitación de expedientes de permisos sanitarios e IFC", client: "Compañía Minera Arqueros S.A.", date: "may 2023 – abr 2025", area: "Permisos", tags: ["Administración e Inspección"] },
+  { title: "Losa de acopio de minerales (Cancha 0)", client: "Planta Delta – ENAMI", date: "dic 2022 – abr 2023", area: "Construcción", tags: ["Obras Civiles"] },
+  { title: "Piscina de emergencia de hormigón armado", client: "Planta Delta – ENAMI", date: "dic 2022 – mar 2023", area: "Construcción", tags: ["Obras Civiles"] },
+  { title: "Pilón de agua fresca", client: "Planta Delta – ENAMI", date: "dic 2022 – feb 2023", area: "Montaje", tags: ["Montaje Mecánico", "Piping"] },
+  { title: "Reposición de carpeta HDPE en talud de tranque de relaves", client: "Planta Delta – ENAMI", date: "nov – dic 2022", area: "Construcción", tags: ["Obras Civiles"] },
+  { title: "Mantención de piscinas", client: "Planta Delta – ENAMI", date: "2022, 2024 y 2025", area: "Construcción", tags: ["Obras Civiles"] },
+  { title: "Ingeniería para mejorar operación del molino 9' × 12'", client: "Cía. Minera San Gerónimo", date: "ago 2022", area: "Ingeniería", tags: ["Montaje Mecánico"] },
+  { title: "Inspección e informe de estado de cubiertas y reparación", client: "Planta Delta – ENAMI", date: "ago – sep 2022", area: "Inspección · Construcción", tags: ["Administración e Inspección"] },
+  { title: "Ingeniería de modificación estructural para cambio de harnero", client: "Cía. Minera San Gerónimo", date: "mar – abr 2022", area: "Ingeniería", tags: ["Estructuras"] },
+  { title: "Red de agua potable para barrio de contratistas", client: "Planta Delta – ENAMI", date: "dic 2021 – ene 2022", area: "Construcción", tags: ["Piping"] },
+  { title: "Recuperación de espesador 18' × 12'", client: "Cía. Minera San Gerónimo", date: "dic 2021 – ene 2022", area: "Ingeniería · Montaje", tags: ["Estructuras", "Montaje Mecánico"] },
+  { title: "Administración directa de construcción de planta de hierro", client: "Planta Talcuna – Cía. Minera San Gerónimo", date: "dic 2020 – oct 2021", area: "Administración", tags: ["Administración e Inspección"] },
+  { title: "Ingeniería de filtros desaguadores", client: "Planta Magnetita – CAP Minería", date: "oct 2019 – ago 2020", area: "Ingeniería", tags: ["Montaje Mecánico"] },
+];
 ---
-<Layout title="Proyectos | S&M Ingeniería SpA" description="Proyectos de ingeniería y construcción para Minera Escondida, CAP Minería y clientes industriales de la zona centro-norte de Chile.">
+<Layout title="Proyectos de ingeniería y construcción minera | S&M Ingeniería" description="Más de 30 proyectos desde 2019 para ENAMI, Minera San Gerónimo, Los Pelambres, CMP, Caserones, Minera Arqueros y CAP Minería.">
   <PageHero
-    title="Proyectos"
-    text="Una muestra de los proyectos mineros e industriales en los que ha participado nuestro equipo."
-    image={img.eolicas}
+    title="Proyectos ejecutados en la minería chilena"
+    text="Proyectos de ingeniería, construcción, montaje, suministro, inspección y permisos desde 2019, en faenas de las regiones de Coquimbo, Atacama y Antofagasta."
+    image={img.hero}
     crumbs={[{ label: "Proyectos" }]}
   />
+
   <section class="section">
-    <div class="wrap"><ProjectGrid items={projects} /></div>
+    <div class="wrap">
+      <ul class="prj-list">
+        {allProjects.map((p) => (
+          <li class="prj-card">
+            <h3>{p.title}</h3>
+            <p class="client"><strong>Cliente/Faena:</strong> {p.client}</p>
+            <p class="date"><strong>Fecha:</strong> {p.date}</p>
+            <p class="area"><strong>Área:</strong> {p.area}</p>
+            <div class="tags">
+              {p.tags.map(t => <span>{t}</span>)}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
+
   <CtaBand />
 </Layout>
+
+<style>
+  .prj-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 24px; grid-template-columns: 1fr; }
+  @media (min-width: 768px) { .prj-list { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .prj-list { grid-template-columns: repeat(3, 1fr); } }
+  .prj-card { background: var(--line); padding: 24px; display: flex; flex-direction: column; border-top: 4px solid var(--accent); }
+  .prj-card h3 { font-size: 1.15rem; margin-bottom: 16px; color: var(--corporate-blue); }
+  .prj-card p { margin-bottom: 8px; font-size: 0.95rem; color: var(--steel); }
+  .prj-card strong { color: var(--ink); }
+  .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .tags span { font-size: 0.8rem; font-weight: 600; padding: 4px 10px; background: var(--white); color: var(--corporate-blue); border: 1px solid var(--corporate-blue); border-radius: 4px; }
+</style>

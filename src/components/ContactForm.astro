@@ -14,9 +14,9 @@ const { preset, dark = false } = Astro.props;
     <label>Correo<input type="email" name="email" autocomplete="email" required /></label>
     <label>Teléfono<input type="tel" name="telefono" autocomplete="tel" /></label>
   </div>
-  <label>Servicio
+  <label>Especialidad
     <select name="servicio">
-      <option value="">Seleccione un servicio</option>
+      <option value="">Seleccione una especialidad</option>
       {services.map((s) => <option value={s.name} data-slug={s.slug} selected={s.slug === preset}>{s.name}</option>)}
       <option value="Otro">Otro</option>
     </select>
@@ -28,13 +28,14 @@ const { preset, dark = false } = Astro.props;
 <style>
   .form { display: grid; gap: 18px; }
   .row { display: grid; gap: 18px; }
-  @media (min-width: 640px) { .row { grid-template-columns: 1fr 1fr; } }
   label { display: grid; gap: 6px; font-weight: 600; font-size: 0.92rem; }
   input, select, textarea {
-    font: inherit; font-weight: 400; padding: 13px 14px; border: 1px solid var(--line); border-radius: 4px;
-    background: var(--white); color: var(--ink); width: 100%;
+    font: inherit; font-weight: 400; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius-md);
+    background: var(--stone); color: var(--ink); width: 100%; transition: var(--transition-base);
   }
-  input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+  input:focus, select:focus, textarea:focus { 
+    outline: none; border-color: var(--accent); background: var(--white); box-shadow: 0 0 0 4px rgba(145, 27, 34, 0.1); 
+  }
   .btn { justify-self: start; }
   .note { font-size: 0.85rem; color: var(--steel); margin: 0; }
   .dark label { color: var(--white); }

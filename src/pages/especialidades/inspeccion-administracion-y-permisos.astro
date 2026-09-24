@@ -1,0 +1,138 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Icon from "../../components/Icon.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { img } from "../../data/site";
+---
+<Layout title="Inspección técnica, administración y permisos mineros | S&M" description="Inspección en terreno, administración de construcción y tramitación de permisos sectoriales, sanitarios e IFC para proyectos mineros.">
+  <PageHero
+    title="Inspección, Administración de Construcción y Permisos"
+    text="Revisamos, controlamos y gestionamos su proyecto para que avance con respaldo técnico y con los permisos al día."
+    image={img.foto4}
+    crumbs={[{ label: "Especialidades", href: "/especialidades" }, { label: "Inspección, Administración y Permisos" }]}
+  >
+    <div class="cta">
+      <a class="btn" href="/contacto">Solicitar servicio</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap intro">
+      <div>
+        <h2>Control técnico y cumplimiento normativo</h2>
+        <p class="lead">Un proyecto sin inspección independiente o sin permisos aprobados arriesga plazos, costos y continuidad. Aportamos revisión técnica, administración de construcción y gestión documental ante la autoridad.</p>
+      </div>
+      <aside class="facts" aria-label="Datos clave">
+        <h3>Por qué S&M</h3>
+        <ul>
+          <li><strong>Criterio de constructor:</strong> inspeccionamos con la experiencia de quien diseña y construye plantas.</li>
+          <li><strong>Gestión documental completa:</strong> del levantamiento de antecedentes a la obtención del permiso.</li>
+          <li><strong>Visión de proyecto completo:</strong> administramos compras, construcción, puesta en marcha y cierre.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--stone">
+    <div class="wrap">
+      <h2>Qué incluye esta especialidad</h2>
+      <ul class="scope">
+        <li>
+          <span class="ic"><Icon name="check" size={26} /></span>
+          <h3>Inspección</h3>
+          <p>Revisión de ingeniería; inspección física en terreno de la construcción.</p>
+        </li>
+        <li>
+          <span class="ic"><Icon name="check" size={26} /></span>
+          <h3>Administración</h3>
+          <p>Desarrollo de ingeniería; gestión de compra y recepción de materiales, equipos y otros; asesoramiento del proceso constructivo y puesta en marcha; cierre de proyectos.</p>
+        </li>
+        <li>
+          <span class="ic"><Icon name="check" size={26} /></span>
+          <h3>Permisología</h3>
+          <p>Levantamiento documental; desarrollo de ingeniería; obtención de permisos sectoriales, sanitarios e IFC.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="wrap projects">
+      <h2>Inspecciones, administración y permisos</h2>
+      <ul>
+        <li><strong>Inspección técnica del estado estructural de las plantas concentradora y de molibdeno.</strong> Minera Caserones (SCM Minera Lumina Copper Chile), dic 2023 – ene 2024.
+          <ul class="sub">
+            <li>Evaluación de las estructuras y de los puntos con corrosión, con equipos manuales y electromecánicos.</li>
+            <li>Clasificación de cada subsistema según la severidad de su ambiente: nula a moderada, moderada a severa o severa.</li>
+            <li>Informe detallado con planes de acción y recomendaciones para cumplir normativas y estándares.</li>
+          </ul>
+        </li>
+        <li><strong>Elaboración y tramitación de expedientes de permisos sanitarios e IFC.</strong> Compañía Minera Arqueros S.A., may 2023 – abr 2025.
+          <ul class="sub">
+            <li>Revisión de brechas de la ingeniería existente del mandante.</li>
+            <li>Ingeniería sanitaria y de tratamiento de aguas para instalaciones temporales y permanentes.</li>
+            <li>37 expedientes: PTAS, PTAP, bodegas de residuos peligrosos, patios de salvataje e Informes de Factibilidad de Construcción (IFC).</li>
+          </ul>
+        </li>
+        <li><strong>Administración directa y asesoría técnica de la construcción</strong> de la planta de recuperación de agua y minerales de hierro, bajo modalidad EPCM. Planta Talcuna – Cía. Minera San Gerónimo, dic 2020 – oct 2021.</li>
+        <li><strong>Inspección e informe del estado de cubiertas</strong> de los edificios de flotación, filtro y muestreras, seguido de su reparación. Planta Delta – ENAMI, ago – sep 2022.</li>
+      </ul>
+      <a class="btn btn--ghost mt" href="/proyectos">Ver todos los proyectos</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap faq">
+      <h2>Preguntas frecuentes</h2>
+      <div>
+        <details>
+          <summary>¿Qué permisos tramitan?</summary>
+          <p>Permisos sectoriales y sanitarios, como PTAS, PTAP, bodegas de residuos peligrosos y patios de salvataje, además de expedientes IFC.</p>
+        </details>
+        <details>
+          <summary>¿Pueden inspeccionar una obra ejecutada por otro contratista?</summary>
+          <p>Sí. Revisamos la ingeniería e inspeccionamos en terreno la construcción; en la planta de recuperación de hierro de Planta Talcuna administramos la construcción en representación del mandante.</p>
+        </details>
+        <details>
+          <summary>¿Qué entrega una inspección técnica de planta?</summary>
+          <p>Un diagnóstico por sector y subsistema, con la clasificación del ambiente de operación, para priorizar mantenciones e inversiones.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Avance con respaldo técnico y regulatorio" text="Cuéntenos el alcance y le enviamos una propuesta técnica y económica." preset="Inspección, Administración y Permisos" />
+</Layout>
+
+<style>
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+  .intro { display: grid; gap: 48px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .intro { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+  .facts { border-top: 6px solid var(--accent); background: var(--stone); padding: 28px; }
+  .facts h3 { margin-bottom: 16px; font-size: 1.2rem; }
+  .facts ul { padding-left: 20px; color: var(--steel); display: grid; gap: 12px; }
+  
+  .scope { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .scope { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1100px) { .scope { grid-template-columns: repeat(3, 1fr); } }
+  .scope li { background: var(--white); padding: 30px 28px; }
+  .scope .ic { color: var(--accent); display: block; margin-bottom: 14px; }
+  .scope p { color: var(--steel); margin: 0; font-size: 0.97rem; }
+  
+  .projects { display: grid; gap: 32px; color: #c3cbd1; }
+  .projects h2 { color: white; margin-bottom: 10px; }
+  .projects ul { padding-left: 20px; display: grid; gap: 12px; font-size: 1.05rem; }
+  .projects ul.sub { padding-left: 24px; margin-top: 8px; font-size: 1rem; color: #a4afb8; }
+  .projects li strong { color: white; }
+  .mt { margin-top: 16px; justify-self: start; }
+
+  .faq { display: grid; gap: 32px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .faq { grid-template-columns: 1fr 1.6fr; } }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 22px 40px 22px 0; font-family: var(--display); font-weight: 600; font-size: 1.15rem; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 4px; top: 16px; font-size: 1.8rem; color: var(--accent); transition: transform 0.2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--steel); padding-bottom: 20px; }
+</style>

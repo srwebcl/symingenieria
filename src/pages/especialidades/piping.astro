@@ -1,0 +1,115 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import Icon from "../../components/Icon.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { img } from "../../data/site";
+---
+<Layout title="Piping minero: cañerías de acero, HDPE y spools engomados | S&M" description="Ingeniería, fabricación y montaje de piping para pulpa, concentrados, relaves y agua: acero, acero inoxidable, HDPE y spools engomados.">
+  <PageHero
+    title="Ingeniería, Fabricación y Montaje de Piping"
+    text="Sistemas de cañerías para el transporte de minerales, pulpa, concentrados, relaves y agua, con el material adecuado para cada fluido."
+    image={img.foto1}
+    crumbs={[{ label: "Especialidades", href: "/especialidades" }, { label: "Piping" }]}
+  >
+    <div class="cta">
+      <a class="btn" href="/contacto">Cotizar piping</a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap intro">
+      <div>
+        <h2>Conducción eficiente, con menos desgaste y detenciones</h2>
+        <p class="lead">Un sistema de cañerías mal dimensionado genera desgaste, obstrucciones y pérdidas de agua. Calculamos diámetros, bombas e instrumentación, y definimos si conviene conducir por impulsión o por gravedad, en cañería o en canal abierto.</p>
+      </div>
+      <aside class="facts" aria-label="Datos clave">
+        <h3>Por qué S&M</h3>
+        <ul>
+          <li><strong>Cálculo antes de instalar:</strong> dimensionamos diámetros y bombas para cada fluido.</li>
+          <li><strong>Revisión 3D:</strong> detectamos interferencias con estructuras y equipos antes de fabricar.</li>
+          <li><strong>Materiales para pulpa abrasiva:</strong> spools y canales engomados, acero inoxidable y HDPE.</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--stone">
+    <div class="wrap">
+      <h2>Qué incluye esta especialidad</h2>
+      <ul class="scope">
+        <li><span class="ic"><Icon name="check" size={26} /></span><h3>Acero pipeline</h3><p>Cañerías y fitting.</p></li>
+        <li><span class="ic"><Icon name="check" size={26} /></span><h3>Acero engomado</h3><p>Spools y cajones revestidos.</p></li>
+        <li><span class="ic"><Icon name="check" size={26} /></span><h3>Acero inoxidable</h3><p>Líneas de cañería y fitting.</p></li>
+        <li><span class="ic"><Icon name="check" size={26} /></span><h3>HDPE</h3><p>Tuberías de HDPE desde 32 mm.</p></li>
+        <li><span class="ic"><Icon name="check" size={26} /></span><h3>Canales</h3><p>Canales engomados abiertos.</p></li>
+        <li><span class="ic"><Icon name="check" size={26} /></span><h3>Ingeniería hidráulica</h3><p>Cálculo de diámetros, bombas e instrumentación.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--ink">
+    <div class="wrap projects">
+      <h2>Proyectos de piping</h2>
+      <ul>
+        <li><strong>Nuevo diseño del pipeline de agua de sello</strong> de las bombas de la planta concentradora: levantamiento, planos de nuevo trazado, memorias de cálculo y CAPEX. Planta Talcuna – Cía. Minera San Gerónimo, desde nov 2025.</li>
+        <li><strong>Nuevo diseño del pipeline de aguas de proceso del sector molienda:</strong> diagrama de flujos, nuevo trazado, memorias de cálculo y CAPEX. Planta Talcuna, desde ago 2025.</li>
+        <li><strong>Ingeniería de líneas de emergencia del sistema de filtrado:</strong> levantamiento, diagrama de flujos, planimetría general, esquema 3D, CAPEX y listado de materiales. Planta Talcuna, feb – abr 2026.</li>
+        <li><strong>Líneas de pulpa y agua para planta de filtrado de concentrado de cobre:</strong> cajones de alimentación engomados, cajones de agua recuperada, chutes de descarga y listados de cañerías, fitting y válvulas. Planta Talcuna, sep – nov 2023.</li>
+        <li><strong>Sistema de agua industrial para riego de caminos:</strong> línea HDPE de 90 mm PN 16 y bomba de 60 m³/h. Planta Delta – ENAMI, dic 2022 – feb 2023.</li>
+        <li><strong>Red de agua potable para el barrio de contratistas:</strong> tubería HDPE de 90 mm PN 10, cámaras de válvulas y pasada bajo el camino principal. Planta Delta – ENAMI, dic 2021 – ene 2022.</li>
+        <li><strong>Servicios de ingeniería y obras hidráulicas menores.</strong> Cía. Minera San Gerónimo, abr – jul 2026.</li>
+      </ul>
+      <a class="btn btn--ghost mt" href="/proyectos">Ver todos los proyectos</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap faq">
+      <h2>Preguntas frecuentes</h2>
+      <div>
+        <details>
+          <summary>¿Trabajan con revestimientos engomados?</summary>
+          <p>Sí, suministramos spools y cajones con engomado interior para resistir la abrasión del mineral.</p>
+        </details>
+        <details>
+          <summary>¿Desarrollan la ingeniería hidráulica?</summary>
+          <p>Sí. Podemos diseñar el sistema completo, incluyendo el cálculo de bombas y diámetros, antes de pasar a fabricación y montaje.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Conducción eficiente para su proceso" text="Cuéntenos el alcance y le enviamos una propuesta técnica y económica." preset="Piping" />
+</Layout>
+
+<style>
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+  .intro { display: grid; gap: 48px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .intro { grid-template-columns: 1.5fr 1fr; align-items: start; } }
+  .facts { border-top: 6px solid var(--accent); background: var(--stone); padding: 28px; }
+  .facts h3 { margin-bottom: 16px; font-size: 1.2rem; }
+  .facts ul { padding-left: 20px; color: var(--steel); display: grid; gap: 12px; }
+  
+  .scope { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); grid-template-columns: 1fr; }
+  @media (min-width: 700px) { .scope { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1100px) { .scope { grid-template-columns: repeat(3, 1fr); } }
+  .scope li { background: var(--white); padding: 30px 28px; }
+  .scope .ic { color: var(--accent); display: block; margin-bottom: 14px; }
+  .scope p { color: var(--steel); margin: 0; font-size: 0.97rem; }
+  
+  .projects { display: grid; gap: 32px; color: #c3cbd1; }
+  .projects h2 { color: white; margin-bottom: 10px; }
+  .projects ul { padding-left: 20px; display: grid; gap: 12px; font-size: 1.05rem; }
+  .projects li strong { color: white; }
+  .mt { margin-top: 16px; justify-self: start; }
+
+  .faq { display: grid; gap: 32px; grid-template-columns: 1fr; }
+  @media (min-width: 960px) { .faq { grid-template-columns: 1fr 1.6fr; } }
+  details { border-bottom: 1px solid var(--line); }
+  summary { cursor: pointer; list-style: none; padding: 22px 40px 22px 0; font-family: var(--display); font-weight: 600; font-size: 1.15rem; position: relative; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; position: absolute; right: 4px; top: 16px; font-size: 1.8rem; color: var(--accent); transition: transform 0.2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { color: var(--steel); padding-bottom: 20px; }
+</style>

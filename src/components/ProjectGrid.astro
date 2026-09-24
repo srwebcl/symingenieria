@@ -6,7 +6,7 @@ const { items } = Astro.props;
 <ul class="pg">
   {items.map((p) => (
     <li>
-      <figure>
+      <figure class="prj-card">
         <div class="ratio">
           {p.video ? (
             <video src={p.video} poster={p.image} autoplay loop muted playsinline />
@@ -14,17 +14,33 @@ const { items } = Astro.props;
             <img src={p.image} alt={p.title} loading="lazy" decoding="async" />
           )}
         </div>
-        <figcaption><h3>{p.title}</h3><span>{p.client}</span></figcaption>
+        <figcaption>
+          <h3>{p.title}</h3>
+          <span>{p.client}</span>
+        </figcaption>
       </figure>
     </li>
   ))}
 </ul>
 <style>
-  .pg { list-style: none; margin: 0; padding: 0; display: grid; gap: 40px 28px; grid-template-columns: 1fr; }
+  .pg { list-style: none; margin: 0; padding: 0; display: grid; gap: 48px 32px; grid-template-columns: 1fr; }
   @media (min-width: 700px) { .pg { grid-template-columns: 1fr 1fr; } }
-  figure { margin: 0; }
-  figcaption { padding-top: 18px; border-top: 3px solid var(--accent); margin-top: 18px; }
-  h3 { margin-bottom: 4px; }
-  span { color: var(--steel); }
-  .section--ink span { color: #c3cbd1; }
+  
+  .prj-card { margin: 0; display: flex; flex-direction: column; group; }
+  
+  figcaption { 
+    padding-top: 20px; 
+    border-top: 3px solid var(--accent); 
+    margin-top: 20px; 
+    transition: var(--transition-base);
+  }
+  
+  h3 { margin-bottom: 6px; font-size: 1.3rem; transition: var(--transition-base); }
+  span { color: var(--steel); font-size: 0.95rem; font-weight: 500; }
+  
+  .section--ink h3 { color: var(--white); }
+  .section--ink span { color: #94A3B8; /* Slate 400 */ }
+  
+  /* Hover effects through the ratio container already set in global.css */
+  .prj-card:hover figcaption { border-top-color: var(--accent-dark); }
 </style>

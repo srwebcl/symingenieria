@@ -7,24 +7,25 @@ import CtaBand from "../components/CtaBand.astro";
 import { services } from "../data/services";
 import { img, projects, site } from "../data/site";
 
-const disciplines = services.filter((s) => s.group === "disciplina");
 const values = [
   { title: "Compromiso", text: "Un equipo profesional responsable y disciplinado, que entrega los proyectos de ingeniería a tiempo y con altos estándares de calidad." },
   { title: "Tenacidad", text: "Esfuerzo constante para cumplir de forma eficiente los objetivos de la empresa y los de cada cliente en sus proyectos." },
   { title: "Adaptabilidad", text: "Los mercados cambian. Integramos nuevos procesos y tecnologías para responder con dinamismo a cada proyecto." },
 ];
 ---
-<Layout title="S&M Ingeniería SpA | Ingeniería EP, EPC y EPCM para minería e industria">
+<Layout title="S&M Ingeniería SpA | Ingeniería, construcción y montaje minero">
   <!-- Hero a pantalla completa -->
   <section class="hero">
     <img src={img.hero} alt="Instalación industrial en faena minera" fetchpriority="high" />
     <div class="shade"></div>
     <div class="wrap hero-in">
-      <h1>Ingeniería para la minería que se resuelve en terreno.</h1>
-      <p>Ingeniería, abastecimiento y gestión de proyectos EP, EPC y EPCM en la zona centro-norte de Chile.</p>
-      <div class="hero-cta">
-        <a class="btn" href="#cotizar">Cotizar un proyecto</a>
-        <a class="btn btn--ghost" href="/servicios">Ver servicios</a>
+      <div class="hero-content">
+        <h1>Ingeniería para la minería que se resuelve en terreno.</h1>
+        <p>Ingeniería, suministro, construcción y montaje para plantas mineras e industriales. Proyectos Greenfield y Brownfield desde La Serena.</p>
+        <div class="hero-cta">
+          <a class="btn" href="/contacto">Cotizar un proyecto</a>
+          <a class="btn btn--ghost" href="/especialidades">Ver especialidades</a>
+        </div>
       </div>
     </div>
     <a class="scroll" href="#intro" aria-label="Bajar a la presentación"><Icon name="down" size={26} /></a>
@@ -36,10 +37,10 @@ const values = [
       <div>
         <h2>Un solo equipo desde el diseño hasta la obra</h2>
         <p class="lead">Desarrollamos ingeniería conceptual, básica y de detalle, gestionamos el abastecimiento y conducimos la construcción de proyectos mineros e industriales.</p>
-        <p>Nuestros profesionales suman más de 15 años de experiencia en las disciplinas civil estructural, mecánica, piping, electricidad e instrumentación. Trabajamos sin grandes estructuras administrativas, lo que mantiene bajo el costo para nuestros clientes.</p>
+        <p>Nuestros profesionales suman más de 15 años de experiencia en las especialidades de obras civiles, estructuras, montaje, piping e inspección. Trabajamos sin grandes estructuras administrativas, lo que mantiene bajo el costo para nuestros clientes.</p>
         <a class="more" href="/nosotros"><span class="dot"><Icon name="arrow" size={18} /></span>Conozca a S&M Ingeniería</a>
       </div>
-      <div class="ratio"><img src={img.foto2} alt="Equipo de S&M Ingeniería en reunión de proyecto" loading="lazy" /></div>
+      <div class="ratio"><img src={img.foto2} alt="Equipo de S&M Ingeniería en terreno" loading="lazy" /></div>
     </div>
   </section>
 
@@ -54,47 +55,23 @@ const values = [
     </div>
   </section>
 
-  <!-- Servicios -->
+  <!-- Especialidades -->
   <section class="section">
     <div class="wrap">
       <div class="head">
-        <h2>Servicios</h2>
-        <a class="more" href="/servicios"><span class="dot"><Icon name="arrow" size={18} /></span>Todos los servicios</a>
+        <h2>Especialidades</h2>
+        <a class="more" href="/especialidades"><span class="dot"><Icon name="arrow" size={18} /></span>Todas las especialidades</a>
       </div>
       <ServiceTiles items={services} />
     </div>
   </section>
 
-  <!-- Disciplinas con selector -->
-  <section class="section section--ink">
-    <div class="wrap disc">
-      <div class="disc-side">
-        <h2>Nuestras disciplinas</h2>
-        <p class="lead">Tres especialidades coordinadas por el mismo equipo, para que la instalación funcione como un solo sistema.</p>
-        <div class="tabs" role="tablist" aria-label="Disciplinas">
-          {disciplines.map((d, i) => (
-            <button role="tab" id={`tab-${d.slug}`} aria-controls={`panel-${d.slug}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? 0 : -1}>
-              {d.name}
-            </button>
-          ))}
-        </div>
-      </div>
-      {disciplines.map((d, i) => (
-        <div class="panel" role="tabpanel" id={`panel-${d.slug}`} aria-labelledby={`tab-${d.slug}`} hidden={i !== 0}>
-          <div class="ratio"><img src={d.image} alt={d.imageAlt} loading="lazy" /></div>
-          <p>{d.summary}</p>
-          <a class="more" href={`/servicios/${d.slug}`}><span class="dot"><Icon name="arrow" size={18} /></span>Ver {d.name.toLowerCase()}</a>
-        </div>
-      ))}
-    </div>
-  </section>
-
   <!-- Proyectos -->
-  <section class="section">
+  <section class="section section--ink">
     <div class="wrap">
-      <div class="head">
+      <div class="head head--dark">
         <h2>Proyectos destacados</h2>
-        <a class="more" href="/proyectos"><span class="dot"><Icon name="arrow" size={18} /></span>Ver proyectos</a>
+        <a class="more" href="/proyectos"><span class="dot"><Icon name="arrow" size={18} /></span>Ver más proyectos</a>
       </div>
       <ProjectGrid items={projects} />
     </div>
@@ -114,63 +91,50 @@ const values = [
   <CtaBand />
 </Layout>
 
-<script>
-  const tabs = Array.from(document.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
-  const select = (tab: HTMLButtonElement) => {
-    tabs.forEach((t) => {
-      const on = t === tab;
-      t.setAttribute("aria-selected", String(on));
-      t.tabIndex = on ? 0 : -1;
-      const panel = document.getElementById(t.getAttribute("aria-controls")!);
-      if (panel) panel.hidden = !on;
-    });
-  };
-  tabs.forEach((t, i) => {
-    t.addEventListener("click", () => select(t));
-    t.addEventListener("keydown", (e) => {
-      const dir = e.key === "ArrowDown" || e.key === "ArrowRight" ? 1 : e.key === "ArrowUp" || e.key === "ArrowLeft" ? -1 : 0;
-      if (!dir) return;
-      e.preventDefault();
-      const next = tabs[(i + dir + tabs.length) % tabs.length];
-      next.focus();
-      select(next);
-    });
-  });
-</script>
-
 <style>
-  .hero { position: relative; min-height: calc(100svh - var(--header-h)); display: flex; align-items: flex-end; color: var(--white); background: var(--ink); overflow: hidden; }
-  .hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: settle 1.6s ease-out both; }
-  .hero .shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(31,42,51,0.92) 0%, rgba(31,42,51,0.35) 60%, rgba(31,42,51,0.15) 100%); }
+  .hero { 
+    position: relative; min-height: calc(100svh - var(--header-h)); 
+    display: flex; align-items: flex-end; color: var(--white); background: var(--ink); overflow: hidden; 
+  }
+  .hero > img { 
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; 
+    animation: settle 2s cubic-bezier(0.4, 0, 0.2, 1) both; 
+  }
+  .hero .shade { 
+    position: absolute; inset: 0; 
+    background: linear-gradient(to top, var(--ink) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0.2) 100%); 
+  }
   .hero-in { position: relative; padding-block: 80px clamp(72px, 10vw, 120px); }
-  .hero h1 { font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 400; font-stretch: normal; max-width: 22ch; letter-spacing: 0.01em; line-height: 1.15; }
-  .hero p { font-size: clamp(1rem, 1.4vw, 1.25rem); font-weight: 300; color: #dde3e7; max-width: 44ch; margin-top: 16px; line-height: 1.6; }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
-  .scroll { position: absolute; right: var(--gut); bottom: 36px; width: 56px; height: 56px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.6); display: grid; place-items: center; color: var(--white); }
-  .scroll:hover { border-color: var(--accent); background: var(--accent); }
+  
+  .hero-content {
+    animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+  }
+  
+  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); font-weight: 700; font-stretch: normal; max-width: 20ch; line-height: 1.1; margin-bottom: 0.2em; color: var(--white); }
+  .hero p { font-size: clamp(1.1rem, 1.5vw, 1.35rem); font-weight: 400; color: #CBD5E1; max-width: 44ch; margin-top: 16px; line-height: 1.6; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+  .scroll { 
+    position: absolute; right: var(--gut); bottom: 36px; width: 56px; height: 56px; border-radius: 50%; 
+    border: 2px solid rgba(255,255,255,0.4); display: grid; place-items: center; color: var(--white); 
+    transition: var(--transition-base);
+  }
+  .scroll:hover { border-color: var(--accent); background: var(--accent); transform: translateY(4px); }
+  
   @keyframes settle { from { transform: scale(1.08); } to { transform: scale(1); } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
   .quote { display: grid; gap: 24px; grid-template-columns: 1fr; max-width: 1000px; }
   @media (min-width: 800px) { .quote { grid-template-columns: 80px 1fr; } }
   .q { color: var(--accent); }
   blockquote { margin: 0; }
   blockquote p { font-family: var(--display); font-stretch: 108%; font-weight: 500; font-size: clamp(1.5rem, 2.8vw, 2.3rem); line-height: 1.25; max-width: 32ch; }
-  blockquote footer { font-weight: 600; color: var(--steel); }
+  blockquote footer { font-weight: 600; color: var(--steel); margin-top: 10px; }
 
   .head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 44px; }
   .head h2 { margin: 0; }
-
-  .disc { display: grid; gap: 48px; grid-template-columns: 1fr; }
-  @media (min-width: 960px) { .disc { grid-template-columns: 0.9fr 1.1fr; align-items: start; } }
-  .tabs { display: grid; margin-top: 32px; border-top: 1px solid #3c4953; }
-  .tabs button {
-    text-align: left; font-family: var(--display); font-stretch: 110%; font-weight: 600; font-size: clamp(1.3rem, 2.2vw, 1.8rem);
-    color: #8e9aa3; background: none; border: 0; border-bottom: 1px solid #3c4953; padding: 20px 0 20px 0; cursor: pointer;
-    border-left: 4px solid transparent; transition: color 0.2s, padding 0.2s, border-color 0.2s;
-  }
-  .tabs button:hover { color: var(--white); }
-  .tabs button[aria-selected="true"] { color: var(--white); border-left-color: var(--accent); padding-left: 20px; }
-  .panel p { margin-top: 24px; font-size: 1.1rem; color: #dde3e7; }
+  .head--dark h2 { color: white; }
+  .head--dark .more { color: #a4afb8; }
+  .head--dark .more:hover { color: white; }
 
   .values { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 28px; grid-template-columns: 1fr; }
   @media (min-width: 800px) { .values { grid-template-columns: repeat(3, 1fr); } }
