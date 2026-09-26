@@ -4,40 +4,126 @@ import { site } from "../data/site";
 interface Props { preset?: string; dark?: boolean }
 const { preset, dark = false } = Astro.props;
 ---
-<form class:list={["form", { dark }]} action={site.formEndpoint} method="POST">
+<form class:list={["form-premium", { dark }]} action={site.formEndpoint} method="POST">
   <input type="hidden" name="_subject" value="Nueva solicitud desde sym-ingenieria.cl" />
-  <div class="row">
-    <label>Nombre<input name="nombre" autocomplete="name" required /></label>
-    <label>Empresa<input name="empresa" autocomplete="organization" /></label>
+  
+  <div class="row-premium">
+    <label class="label-premium">
+      <span class="label-text">Nombre completo</span>
+      <input class="input-premium" name="nombre" autocomplete="name" placeholder="Ej. Juan Pérez" required />
+    </label>
+    <label class="label-premium">
+      <span class="label-text">Empresa</span>
+      <input class="input-premium" name="empresa" autocomplete="organization" placeholder="Ej. Minera Centinela" />
+    </label>
   </div>
-  <div class="row">
-    <label>Correo<input type="email" name="email" autocomplete="email" required /></label>
-    <label>Teléfono<input type="tel" name="telefono" autocomplete="tel" /></label>
+  
+  <div class="row-premium">
+    <label class="label-premium">
+      <span class="label-text">Correo electrónico</span>
+      <input class="input-premium" type="email" name="email" autocomplete="email" placeholder="juan@minera.cl" required />
+    </label>
+    <label class="label-premium">
+      <span class="label-text">Teléfono</span>
+      <input class="input-premium" type="tel" name="telefono" autocomplete="tel" placeholder="+56 9 1234 5678" />
+    </label>
   </div>
-  <label>Especialidad
-    <select name="servicio">
-      <option value="">Seleccione una especialidad</option>
-      {services.map((s) => <option value={s.name} data-slug={s.slug} selected={s.slug === preset}>{s.name}</option>)}
-      <option value="Otro">Otro</option>
-    </select>
+  
+  <label class="label-premium">
+    <span class="label-text">Especialidad de interés</span>
+    <div class="select-wrapper">
+      <select class="input-premium" name="servicio">
+        <option value="">Seleccione una especialidad</option>
+        {services.map((s) => <option value={s.name} data-slug={s.slug} selected={s.slug === preset}>{s.name}</option>)}
+        <option value="Otro">Otro</option>
+      </select>
+      <svg class="select-icon" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+    </div>
   </label>
-  <label>Cuéntenos sobre su proyecto<textarea name="mensaje" rows="4" required></textarea></label>
-  <button class="btn" type="submit">Enviar solicitud</button>
-  <p class="note">Respondemos en un plazo de un día hábil.</p>
+  
+  <label class="label-premium">
+    <span class="label-text">Cuéntenos sobre su proyecto</span>
+    <textarea class="input-premium" name="mensaje" rows="4" placeholder="Detalles de ingeniería, plazos, etc." required></textarea>
+  </label>
+  
+  <button class="btn-submit-premium" type="submit">Enviar solicitud de proyecto</button>
+  <p class="note-premium">Respondemos en un plazo de 24 horas hábiles.</p>
 </form>
+
 <style>
-  .form { display: grid; gap: 18px; }
-  .row { display: grid; gap: 18px; }
-  label { display: grid; gap: 6px; font-weight: 600; font-size: 0.92rem; }
-  input, select, textarea {
-    font: inherit; font-weight: 400; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius-md);
-    background: var(--stone); color: var(--ink); width: 100%; transition: var(--transition-base);
+  .form-premium { 
+    display: grid; gap: 24px; 
+    background: #FFFFFF;
+    padding: clamp(32px, 5vw, 48px);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
   }
-  input:focus, select:focus, textarea:focus { 
-    outline: none; border-color: var(--accent); background: var(--white); box-shadow: 0 0 0 4px rgba(145, 27, 34, 0.1); 
+  
+  .row-premium { display: grid; gap: 24px; }
+  @media (min-width: 600px) { .row-premium { grid-template-columns: 1fr 1fr; } }
+  
+  .label-premium { display: grid; gap: 8px; position: relative; }
+  .label-text { font-size: 0.9rem; font-weight: 500; color: #475569; }
+  
+  .input-premium {
+    font-family: inherit; font-size: 1.05rem; font-weight: 400; 
+    padding: 16px 20px; 
+    border: 1px solid #E2E8F0; 
+    border-radius: 12px;
+    background: #F8FAFC; 
+    color: #0F172A; 
+    width: 100%; 
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.01) inset;
   }
-  .btn { justify-self: start; }
-  .note { font-size: 0.85rem; color: var(--steel); margin: 0; }
-  .dark label { color: var(--white); }
-  .dark .note { color: #c3cbd1; }
+  
+  .input-premium::placeholder { color: #94A3B8; }
+  
+  .input-premium:hover { border-color: #CBD5E1; background: #FFFFFF; }
+  
+  .input-premium:focus { 
+    outline: none; 
+    border-color: var(--accent); 
+    background: #FFFFFF; 
+    box-shadow: 0 0 0 4px rgba(145, 27, 34, 0.12), 0 1px 2px rgba(0,0,0,0.01) inset; 
+    transform: translateY(-1px);
+  }
+
+  .select-wrapper { position: relative; }
+  .select-wrapper select { appearance: none; padding-right: 48px; }
+  .select-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #64748B; pointer-events: none; }
+  
+  .btn-submit-premium { 
+    justify-self: start;
+    margin-top: 8px;
+    background: var(--accent);
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 18px 40px;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(145, 27, 34, 0.2);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  .btn-submit-premium:hover { 
+    background: #7A161C;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(145, 27, 34, 0.3);
+  }
+  
+  .btn-submit-premium:active {
+    transform: translateY(1px);
+    box-shadow: 0 5px 10px rgba(145, 27, 34, 0.2);
+  }
+  
+  .note-premium { font-size: 0.85rem; color: #94A3B8; margin: 0; text-align: center; }
+  
+  /* Dark mode overrides if needed */
+  .dark { background: transparent; padding: 0; box-shadow: none; }
+  .dark .label-text { color: var(--white); }
+  .dark .note-premium { color: #CBD5E1; text-align: left; }
 </style>

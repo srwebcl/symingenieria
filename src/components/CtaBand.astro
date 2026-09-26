@@ -9,24 +9,51 @@ const {
   preset,
 } = Astro.props;
 ---
-<section class="section section--ink band" id="cotizar">
-  <div class="wrap grid-2">
-    <div>
+<section class="section section-cta" id="cotizar">
+  <div class="wrap grid-2-cta">
+    <div class="cta-text">
       <h2>{title}</h2>
-      <p class="lead">{text}</p>
-      <ul class="direct">
-        <li><Icon name="phone" size={22} /><a href={site.phoneHref}>{site.phone}</a></li>
-        <li><Icon name="whatsapp" size={22} /><a href={site.whatsapp} target="_blank" rel="noopener">Escribir por WhatsApp</a></li>
-        <li><Icon name="mail" size={22} /><a href={`mailto:${site.email}`}>{site.email}</a></li>
+      <p class="lead-cta">{text}</p>
+      <ul class="direct-cta">
+        <li><Icon name="phone" size={24} /><a href={site.phoneHref}>{site.phone}</a></li>
+        <li><Icon name="whatsapp" size={24} /><a href={site.whatsapp} target="_blank" rel="noopener">Escribir por WhatsApp</a></li>
+        <li><Icon name="mail" size={24} /><a href={`mailto:${site.email}`}>{site.email}</a></li>
       </ul>
     </div>
-    <ContactForm preset={preset} dark />
+    <div class="cta-form-container">
+      <ContactForm preset={preset} />
+    </div>
   </div>
 </section>
 <style>
-  .band { border-top: 6px solid var(--accent); }
-  .direct { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 14px; }
-  .direct li { display: flex; gap: 12px; align-items: center; color: var(--accent); }
-  .direct a { color: var(--white); text-decoration: none; font-weight: 600; }
-  .direct a:hover { text-decoration: underline; }
+  .section-cta { 
+    background: #F5F5F7; /* Pearl gray to separate from Footer */
+    padding-block: clamp(80px, 12vw, 160px); 
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  .grid-2-cta { 
+    display: grid; gap: 64px; grid-template-columns: 1fr; align-items: flex-start; 
+  }
+  @media (min-width: 900px) { .grid-2-cta { grid-template-columns: 1fr 1fr; gap: 120px; } }
+  
+  .cta-text h2 { 
+    font-family: var(--display);
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+  }
+  .lead-cta { 
+    font-size: 1.25rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 48px; 
+  }
+  
+  .direct-cta { list-style: none; padding: 0; margin: 0; display: grid; gap: 24px; }
+  .direct-cta li { display: flex; gap: 16px; align-items: center; color: var(--accent); }
+  .direct-cta a { 
+    color: var(--text-primary); font-size: 1.1rem; text-decoration: none; font-weight: 500; 
+    transition: var(--transition-smooth);
+  }
+  .direct-cta a:hover { color: var(--accent); }
 </style>

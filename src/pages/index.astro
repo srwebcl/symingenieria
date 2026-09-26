@@ -14,77 +14,122 @@ const values = [
 ];
 ---
 <Layout title="S&M Ingeniería SpA | Ingeniería, construcción y montaje minero">
-  <!-- Hero a pantalla completa -->
-  <section class="hero">
-    <img src={img.hero} alt="Instalación industrial en faena minera" fetchpriority="high" />
-    <div class="shade"></div>
-    <div class="wrap hero-in">
-      <div class="hero-content">
-        <h1>Ingeniería para la minería que se resuelve en terreno.</h1>
-        <p>Ingeniería, suministro, construcción y montaje para plantas mineras e industriales. Proyectos Greenfield y Brownfield desde La Serena.</p>
-        <div class="hero-cta">
-          <a class="btn" href="/contacto">Cotizar un proyecto</a>
-          <a class="btn btn--ghost" href="/especialidades">Ver especialidades</a>
+  
+  <!-- Hero Minimalista Potente -->
+  <section class="hero-premium">
+    <div class="hero-bg">
+      <video src="/videos/hero.mp4" autoplay loop muted playsinline fetchpriority="high"></video>
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="wrap hero-wrap">
+      <div class="hero-text-area">
+        <h1 class="hero-title">Ingeniería y Construcción para la <strong>Minería en Chile.</strong></h1>
+        <p class="hero-subtitle">Ingeniería, suministro, construcción y montaje para plantas mineras e industriales.</p>
+        <div class="hero-actions">
+          <a class="btn-premium btn-solid" href="/contacto">Cotizar un proyecto</a>
+          <a class="btn-premium btn-text-light" href="/especialidades">Ver especialidades <Icon name="arrow" size={18}/></a>
         </div>
       </div>
     </div>
-    <a class="scroll" href="#intro" aria-label="Bajar a la presentación"><Icon name="down" size={26} /></a>
   </section>
 
   <!-- Presentación -->
-  <section class="section" id="intro">
-    <div class="wrap grid-2">
-      <div>
-        <h2>Un solo equipo desde el diseño hasta la obra</h2>
-        <p class="lead">Desarrollamos ingeniería conceptual, básica y de detalle, gestionamos el abastecimiento y conducimos la construcción de proyectos mineros e industriales.</p>
-        <p>Nuestros profesionales suman más de 15 años de experiencia en las especialidades de obras civiles, estructuras, montaje, piping e inspección. Trabajamos sin grandes estructuras administrativas, lo que mantiene bajo el costo para nuestros clientes.</p>
-        <a class="more" href="/nosotros"><span class="dot"><Icon name="arrow" size={18} /></span>Conozca a S&M Ingeniería</a>
+  <section class="section-premium bg-light" id="intro">
+    <div class="wrap split-premium">
+      <div class="split-text">
+        <span class="eyebrow">Quienes Somos</span>
+        <h2 class="title-premium">Un solo equipo desde el diseño hasta la obra.</h2>
+        <p class="lead-premium">Desarrollamos ingeniería conceptual, básica y de detalle, gestionamos el abastecimiento y conducimos la construcción de proyectos mineros e industriales.</p>
+        <p class="body-premium">Nuestros profesionales suman más de 15 años de experiencia en las especialidades de obras civiles, estructuras, montaje, piping e inspección. Trabajamos sin grandes estructuras administrativas, lo que mantiene bajo el costo para nuestros clientes.</p>
+        <a class="link-premium mt-12" href="/nosotros">Conozca a S&M Ingeniería <Icon name="arrow" size={18}/></a>
       </div>
-      <div class="ratio"><img src={img.foto2} alt="Equipo de S&M Ingeniería en terreno" loading="lazy" /></div>
+      <div class="split-image">
+        <img src={img.foto2} alt="Equipo de S&M Ingeniería en terreno" loading="lazy" />
+      </div>
     </div>
   </section>
 
   <!-- Cita / misión -->
-  <section class="section section--stone">
-    <div class="wrap quote">
-      <span class="q"><Icon name="quote" size={56} /></span>
-      <blockquote>
-        <p>Entregamos soluciones de ingeniería, construcción y gestión de proyectos con un alto nivel de calidad y especialización para la minería e industria del centro-norte de Chile.</p>
-        <footer>Nuestra misión</footer>
-      </blockquote>
+  <section class="section-premium">
+    <div class="wrap">
+      <div class="quote-premium-box">
+        <span class="quote-icon">“</span>
+        <blockquote>
+          <p>Entregamos soluciones de ingeniería, construcción y gestión de proyectos con un alto nivel de calidad y especialización para la minería e industria del centro-norte de Chile.</p>
+          <footer>Nuestra misión</footer>
+        </blockquote>
+      </div>
     </div>
   </section>
 
   <!-- Especialidades -->
-  <section class="section">
+  <section class="section-premium bg-light">
     <div class="wrap">
-      <div class="head">
-        <h2>Especialidades</h2>
-        <a class="more" href="/especialidades"><span class="dot"><Icon name="arrow" size={18} /></span>Todas las especialidades</a>
+      <div class="section-header-premium">
+        <div>
+          <span class="eyebrow">Capacidades</span>
+          <h2 class="title-premium">Especialidades</h2>
+        </div>
+        <a class="link-premium" href="/especialidades">Todas las especialidades <Icon name="arrow" size={18}/></a>
       </div>
       <ServiceTiles items={services} />
     </div>
   </section>
 
-  <!-- Proyectos -->
-  <section class="section section--ink">
+  <!-- Procesos Críticos -->
+  <section class="section-premium section-dark">
     <div class="wrap">
-      <div class="head head--dark">
-        <h2>Proyectos destacados</h2>
-        <a class="more" href="/proyectos"><span class="dot"><Icon name="arrow" size={18} /></span>Ver más proyectos</a>
+      <div class="section-header-premium">
+        <div>
+          <span class="eyebrow eyebrow-light">Ejecución en Terreno</span>
+          <h2 class="title-premium text-white">Capacidad técnica en procesos críticos</h2>
+        </div>
+      </div>
+      <div class="video-grid-premium">
+        <div class="video-card">
+          <video src="/videos/filtro.mp4" autoplay loop muted playsinline></video>
+          <div class="video-label">01 / Filtro de Concentrado</div>
+        </div>
+        <div class="video-card mt-layout">
+          <video src="/videos/magnetica.mp4" autoplay loop muted playsinline></video>
+          <div class="video-label">02 / Separación Magnética</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proyectos -->
+  <section class="section-premium">
+    <div class="wrap">
+      <div class="section-header-premium">
+        <div>
+          <span class="eyebrow">Casos de Éxito</span>
+          <h2 class="title-premium">Proyectos destacados</h2>
+        </div>
+        <a class="link-premium" href="/proyectos">Ver más proyectos <Icon name="arrow" size={18}/></a>
       </div>
       <ProjectGrid items={projects} />
     </div>
   </section>
 
   <!-- Por qué nosotros -->
-  <section class="section section--stone">
+  <section class="section-premium bg-light">
     <div class="wrap">
-      <h2>¿Por qué trabajar con nosotros?</h2>
-      <ul class="values">
-        {values.map((v) => <li><h3>{v.title}</h3><p>{v.text}</p></li>)}
+      <div class="section-header-center">
+        <span class="eyebrow">Excelencia Operacional</span>
+        <h2 class="title-premium">¿Por qué trabajar con nosotros?</h2>
+      </div>
+      <ul class="values-premium">
+        {values.map((v) => (
+          <li class="value-card">
+            <h3>{v.title}</h3>
+            <p>{v.text}</p>
+          </li>
+        ))}
       </ul>
-      <p class="offices">Profesionales directamente en terreno y reuniones en {site.offices.join(", ")}.</p>
+      <div class="offices-premium">
+        <p>Profesionales directamente en terreno y reuniones en <strong>{site.offices.join(", ")}</strong>.</p>
+      </div>
     </div>
   </section>
 
@@ -92,53 +137,356 @@ const values = [
 </Layout>
 
 <style>
-  .hero { 
-    position: relative; min-height: calc(100svh - var(--header-h)); 
-    display: flex; align-items: flex-end; color: var(--white); background: var(--ink); overflow: hidden; 
+  /* Base Variables for Premium Minimalist Aesthetic */
+  :root {
+    --text-primary: #1D1D1F;
+    --text-secondary: #86868B;
+    --bg-page: #FFFFFF;
+    --bg-light: #F5F5F7;
+    --border-soft: rgba(0, 0, 0, 0.08);
+    --shadow-premium: 0 30px 60px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
+    --shadow-float: 0 40px 80px rgba(0, 0, 0, 0.12), 0 10px 20px rgba(0, 0, 0, 0.06);
+    --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .hero > img { 
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; 
-    animation: settle 2s cubic-bezier(0.4, 0, 0.2, 1) both; 
-  }
-  .hero .shade { 
-    position: absolute; inset: 0; 
-    background: linear-gradient(to top, var(--ink) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0.2) 100%); 
-  }
-  .hero-in { position: relative; padding-block: 80px clamp(72px, 10vw, 120px); }
-  
-  .hero-content {
-    animation: slideUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
-  }
-  
-  .hero h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); font-weight: 700; font-stretch: normal; max-width: 20ch; line-height: 1.1; margin-bottom: 0.2em; color: var(--white); }
-  .hero p { font-size: clamp(1.1rem, 1.5vw, 1.35rem); font-weight: 400; color: #CBD5E1; max-width: 44ch; margin-top: 16px; line-height: 1.6; }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
-  .scroll { 
-    position: absolute; right: var(--gut); bottom: 36px; width: 56px; height: 56px; border-radius: 50%; 
-    border: 2px solid rgba(255,255,255,0.4); display: grid; place-items: center; color: var(--white); 
-    transition: var(--transition-base);
-  }
-  .scroll:hover { border-color: var(--accent); background: var(--accent); transform: translateY(4px); }
-  
-  @keyframes settle { from { transform: scale(1.08); } to { transform: scale(1); } }
-  @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-  .quote { display: grid; gap: 24px; grid-template-columns: 1fr; max-width: 1000px; }
-  @media (min-width: 800px) { .quote { grid-template-columns: 80px 1fr; } }
-  .q { color: var(--accent); }
-  blockquote { margin: 0; }
-  blockquote p { font-family: var(--display); font-stretch: 108%; font-weight: 500; font-size: clamp(1.5rem, 2.8vw, 2.3rem); line-height: 1.25; max-width: 32ch; }
-  blockquote footer { font-weight: 600; color: var(--steel); margin-top: 10px; }
+  /* Structural Spacing */
+  .section-premium { padding-block: clamp(100px, 14vw, 180px); background: var(--bg-page); }
+  .bg-light { background: var(--bg-light); }
+  
+  /* Typography Precision */
+  .eyebrow {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  
+  .title-premium {
+    font-family: var(--display);
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    max-width: 22ch;
+  }
+  
+  .lead-premium {
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    max-width: 46ch;
+  }
 
-  .head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 44px; }
-  .head h2 { margin: 0; }
-  .head--dark h2 { color: white; }
-  .head--dark .more { color: #a4afb8; }
-  .head--dark .more:hover { color: white; }
+  .body-premium {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    max-width: 50ch;
+  }
 
-  .values { list-style: none; padding: 0; margin: 40px 0 0; display: grid; gap: 28px; grid-template-columns: 1fr; }
-  @media (min-width: 800px) { .values { grid-template-columns: repeat(3, 1fr); } }
-  .values li { border-top: 4px solid var(--accent); padding-top: 22px; }
-  .values p { color: var(--steel); }
-  .offices { margin-top: 32px; font-weight: 600; }
+  /* Hero Section */
+  .hero-premium {
+    position: relative;
+    min-height: calc(100svh - var(--header-h));
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: clamp(60px, 15vh, 120px);
+    background: #000;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .hero-bg img, .hero-bg video {
+    width: 100%; height: 100%; object-fit: cover;
+    animation: scaleInLight 2.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10, 15, 26, 0.95) 0%, rgba(10, 15, 26, 0.5) 50%, rgba(10, 15, 26, 0.1) 100%);
+  }
+
+  .hero-wrap {
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-text-area {
+    display: flex;
+    flex-direction: column;
+    animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  }
+
+  .hero-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    max-width: 26ch;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  }
+  .hero-title strong { font-weight: 600; color: #FFFFFF; }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    color: #D1D5DB; /* Elegant light gray */
+    max-width: 50ch;
+    margin-bottom: 32px;
+    line-height: 1.6;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  /* Premium Buttons */
+  .btn-premium {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: var(--body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: var(--transition-smooth);
+  }
+  
+  .btn-solid {
+    background: var(--corporate-blue);
+    color: #FFFFFF;
+    padding: 14px 32px;
+    box-shadow: 0 10px 20px rgba(22, 99, 150, 0.2);
+  }
+  .btn-solid:hover {
+    background: #114c74;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(22, 99, 150, 0.3);
+  }
+
+  .btn-text {
+    color: var(--text-primary);
+    padding: 16px 0;
+  }
+  .btn-text:hover { color: var(--accent); gap: 12px; }
+  
+  .btn-text-light {
+    color: #FFFFFF;
+    padding: 16px 0;
+  }
+  .btn-text-light:hover { color: #FFFFFF; opacity: 0.8; gap: 12px; }
+
+  @keyframes scaleInLight {
+    from { transform: scale(1.08); }
+    to { transform: scale(1); }
+  }
+
+  /* Split Layout (Intro) */
+  .split-premium {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  @media (min-width: 960px) {
+    .split-premium { grid-template-columns: 1fr 1fr; gap: 120px; }
+  }
+
+  .split-image {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-premium);
+    aspect-ratio: 4 / 5;
+  }
+  .split-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Interactive Links */
+  .link-premium {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--corporate-blue);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    position: relative;
+  }
+  .link-premium::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0%; height: 1px; background: var(--corporate-blue);
+    transition: var(--transition-smooth);
+  }
+  .link-premium:hover { gap: 16px; }
+  .link-premium:hover::after { width: 100%; }
+
+  .mt-12 { margin-top: 32px; }
+
+  /* Minimalist Quote */
+  .quote-premium-box {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+  }
+  .quote-icon {
+    font-family: var(--display);
+    font-size: 8rem;
+    line-height: 0;
+    color: var(--bg-light);
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+  .quote-premium-box blockquote { margin: 0; position: relative; z-index: 1; padding-top: 40px; }
+  .quote-premium-box p {
+    font-family: var(--display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 300;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 32px;
+  }
+  .quote-premium-box footer {
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+  }
+
+  /* Section Headers */
+  .section-header-premium {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+    gap: 24px;
+  }
+  .section-header-premium .title-premium { margin-bottom: 0; }
+  
+  .section-header-center {
+    text-align: center;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Value Cards */
+  .values-premium {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  @media (min-width: 800px) {
+    .values-premium { grid-template-columns: repeat(3, 1fr); gap: 64px; }
+  }
+  
+  .value-card h3 {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+  }
+  .value-card p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+  }
+
+  .offices-premium {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+  }
+  .offices-premium strong { color: var(--text-primary); font-weight: 500; }
+
+  /* Video Showcase Section */
+  .section-dark {
+    background: var(--ink);
+  }
+  .eyebrow-light { color: #CBD5E1; }
+  .text-white { color: #FFFFFF !important; }
+  
+  .video-grid-premium {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 40px;
+  }
+  @media (min-width: 900px) {
+    .video-grid-premium { grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .mt-layout { margin-top: 120px; } /* Asymmetrical layout */
+  }
+  
+  .video-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+    transform: translateZ(0);
+  }
+  
+  .video-card video {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .video-card:hover video { opacity: 1; transform: scale(1.03); }
+  
+  .video-label {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(60px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
 </style>

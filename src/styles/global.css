@@ -73,7 +73,12 @@ h3 { font-size: clamp(1.25rem, 1.8vw, 1.5rem); line-height: 1.25; letter-spacing
 p { margin: 0 0 1.2em; max-width: 70ch; }
 
 /* Structural Utility Classes */
-.wrap { width: min(100% - var(--gut) * 2, var(--wrap)); margin-inline: auto; }
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--gut);
+}
 .section { padding-block: clamp(72px, 10vw, 140px); } /* Increased breathing room */
 .section--stone { background: var(--stone); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .section--ink { background: var(--ink); color: var(--white); }
