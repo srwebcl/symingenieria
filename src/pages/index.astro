@@ -18,7 +18,7 @@ const values = [
   <!-- Hero Minimalista Potente -->
   <section class="hero-premium">
     <div class="hero-bg">
-      <video src="/videos/hero.mp4" autoplay loop muted playsinline fetchpriority="high"></video>
+      <video src="/videos/crane.mp4" autoplay loop muted playsinline fetchpriority="high"></video>
       <div class="hero-overlay"></div>
     </div>
     <div class="wrap hero-wrap">
@@ -76,24 +76,35 @@ const values = [
     </div>
   </section>
 
-  <!-- Procesos Críticos -->
+  <!-- Procesos Críticos (Slider Interactivo) -->
   <section class="section-premium section-dark">
-    <div class="wrap">
+    <div class="wrap position-relative">
       <div class="section-header-premium">
         <div>
           <span class="eyebrow eyebrow-light">Ejecución en Terreno</span>
           <h2 class="title-premium text-white">Capacidad técnica en procesos críticos</h2>
         </div>
       </div>
-      <div class="video-grid-premium">
-        <div class="video-card">
-          <video src="/videos/filtro.mp4" autoplay loop muted playsinline></video>
-          <div class="video-label">01 / Filtro de Concentrado</div>
+      
+      <div class="slider-container">
+        <button class="slider-btn prev-btn" aria-label="Proceso Anterior"><Icon name="arrow" size={24}/></button>
+        
+        <div class="slider-track" id="procesos-slider">
+          <div class="slider-slide">
+            <div class="video-card">
+              <video src="/videos/filtro.mp4" autoplay loop muted playsinline></video>
+              <div class="video-label">01 / Filtro de Concentrado</div>
+            </div>
+          </div>
+          <div class="slider-slide">
+            <div class="video-card">
+              <video src="/videos/magnetica.mp4" autoplay loop muted playsinline></video>
+              <div class="video-label">02 / Separación Magnética</div>
+            </div>
+          </div>
         </div>
-        <div class="video-card mt-layout">
-          <video src="/videos/magnetica.mp4" autoplay loop muted playsinline></video>
-          <div class="video-label">02 / Separación Magnética</div>
-        </div>
+        
+        <button class="slider-btn next-btn" aria-label="Siguiente Proceso"><Icon name="arrow" size={24}/></button>
       </div>
     </div>
   </section>
@@ -427,58 +438,108 @@ const values = [
   }
   .offices-premium strong { color: var(--text-primary); font-weight: 500; }
 
-  /* Video Showcase Section */
+  /* Video Showcase Section (Slider + Blueprint) */
   .section-dark {
-    background: var(--ink);
+    position: relative;
+    background-color: var(--ink);
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: center top;
   }
+  .section-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 20%, var(--ink) 90%);
+    pointer-events: none;
+  }
+
+  .position-relative { position: relative; z-index: 2; }
   .eyebrow-light { color: #CBD5E1; }
   .text-white { color: #FFFFFF !important; }
   
-  .video-grid-premium {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 40px;
-    margin-top: 40px;
-  }
-  @media (min-width: 900px) {
-    .video-grid-premium { grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .mt-layout { margin-top: 120px; } /* Asymmetrical layout */
+  .slider-container {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto 0;
+    display: flex;
+    align-items: center;
+    gap: 24px;
   }
   
+  .slider-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    flex: 1;
+    border-radius: 24px;
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .slider-track::-webkit-scrollbar { display: none; }
+  
+  .slider-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    padding: 12px; /* Small safe area for shadows */
+  }
+
   .video-card {
     position: relative;
-    border-radius: 24px;
+    border-radius: 16px;
     overflow: hidden;
     background: #000;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1);
     transform: translateZ(0);
+    aspect-ratio: 16 / 9;
   }
   
   .video-card video {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: 100%;
     object-fit: cover;
     display: block;
-    opacity: 0.85;
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0.9;
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .video-card:hover video { opacity: 1; transform: scale(1.03); }
+  .video-card:hover video { opacity: 1; }
   
   .video-label {
     position: absolute;
     bottom: 24px;
     left: 24px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+    font-weight: 500;
     color: #FFFFFF;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 10px 24px;
     border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
+
+  .slider-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    flex-shrink: 0;
+  }
+  .slider-btn:hover { background: var(--accent); border-color: var(--accent); transform: scale(1.05); }
+  .slider-btn:active { transform: scale(0.95); }
+  .prev-btn svg { transform: rotate(180deg); } /* Invert arrow for prev */
 
   /* Animations */
   @keyframes fadeUp {
@@ -490,3 +551,21 @@ const values = [
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
 </style>
+
+<script>
+  // Simple slider logic for the video showcase
+  document.addEventListener("DOMContentLoaded", () => {
+    const track = document.getElementById("procesos-slider");
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+
+    if (track && prevBtn && nextBtn) {
+      prevBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -track.clientWidth, behavior: "smooth" });
+      });
+      nextBtn.addEventListener("click", () => {
+        track.scrollBy({ left: track.clientWidth, behavior: "smooth" });
+      });
+    }
+  });
+</script>
