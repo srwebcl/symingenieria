@@ -1,38 +1,85 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Icon from "../components/Icon.astro";
 import ContactForm from "../components/ContactForm.astro";
-import { site } from "../data/site";
+import PageHero from "../components/PageHero.astro";
+import { site, img } from "../data/site";
 ---
 <Layout title="Contacto | S&M Ingeniería SpA" description="Cotice su proyecto de ingeniería con S&M Ingeniería. Oficina en La Serena y reuniones en Calama y Santiago.">
-  <section class="section">
-    <div class="wrap grid-2 top">
-      <div>
-        <h1>Contacto</h1>
-        <p class="lead">Consulte por los servicios que necesita cotizar. Coordinamos una reunión con nuestros profesionales en {site.offices.join(", ")}.</p>
-        <ul class="list">
-          <li><Icon name="pin" size={24} /><span>{site.address}</span></li>
-          <li><Icon name="phone" size={24} /><a href={site.phoneHref}>{site.phone}</a></li>
-          <li><Icon name="whatsapp" size={24} /><a href={site.whatsapp} target="_blank" rel="noopener">WhatsApp</a></li>
-          <li><Icon name="mail" size={24} /><a href={`mailto:${site.email}`}>{site.email}</a></li>
+  <PageHero 
+    title="Contacto" 
+    text={`Consulte por los servicios que necesita cotizar. Coordinamos reuniones operativas con nuestros profesionales en ${site.offices.join(", ")}.`}
+    crumbs={[{ label: "Contacto" }]}
+  />
+
+  <section class="section section-cta">
+    <div class="wrap grid-2-cta">
+      <div class="cta-text reveal-on-scroll">
+        <ul class="direct-cta">
+          <li>
+            <span class="cta-label">Oficina Central</span>
+            <span>{site.address}</span>
+          </li>
+          <li>
+            <span class="cta-label">Vía Telefónica</span>
+            <a href={site.phoneHref}>{site.phone}</a>
+          </li>
+          <li>
+            <span class="cta-label">Directo con Ejecutivo</span>
+            <a href={site.whatsapp} target="_blank" rel="noopener">Abrir WhatsApp</a>
+          </li>
+          <li>
+            <span class="cta-label">Consultas Formales</span>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+          </li>
         </ul>
       </div>
-      <div class="box"><ContactForm /></div>
+      <div class="cta-form-container reveal-on-scroll delay-1">
+        <ContactForm />
+      </div>
     </div>
   </section>
 </Layout>
+
 <script>
   // Preselecciona el servicio si viene en la URL: /contacto?servicio=<slug>
   const slug = new URLSearchParams(location.search).get("servicio");
   const sel = document.querySelector<HTMLSelectElement>('select[name="servicio"]');
   if (slug && sel) { const o = sel.querySelector<HTMLOptionElement>(`option[data-slug="${slug}"]`); if (o) o.selected = true; }
 </script>
+
 <style>
-  .top { align-items: start; }
-  .list { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 18px; }
-  .list li { display: flex; gap: 14px; align-items: center; }
-  .list :global(svg) { color: var(--accent); flex: none; }
-  .list a { font-weight: 600; text-decoration: none; }
-  .list a:hover { color: var(--accent); }
-  .box { background: var(--stone); padding: clamp(24px, 4vw, 44px); border-top: 6px solid var(--accent); }
+  .section-cta { 
+    background: #FFFFFF;
+    padding-block: clamp(48px, 6vw, 80px); /* Reduced padding */
+  }
+  .grid-2-cta { 
+    display: grid; gap: 48px; grid-template-columns: 1fr; align-items: flex-start; 
+  }
+  @media (min-width: 900px) { 
+    .grid-2-cta { grid-template-columns: 1fr 1.5fr; gap: 80px; } 
+  }
+  
+  .direct-cta { 
+    list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 24px; /* Tighter gap */
+  }
+  .direct-cta li { 
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .cta-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(0,0,0,0.4);
+  }
+  .direct-cta a, .direct-cta span:not(.cta-label) { 
+    font-family: inherit;
+    color: var(--corporate-blue, #0A3D62); 
+    font-size: 1.1rem; /* Smaller font size */
+    font-weight: 500;
+    text-decoration: none; 
+    transition: color 0.4s;
+    line-height: 1.4;
+  }
+  .direct-cta a:hover { color: var(--accent); }
 </style>

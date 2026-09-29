@@ -15,9 +15,14 @@ const {
       <h2>{title}</h2>
       <p class="lead-cta">{text}</p>
       <ul class="direct-cta">
-        <li><Icon name="phone" size={24} /><a href={site.phoneHref}>{site.phone}</a></li>
-        <li><Icon name="whatsapp" size={24} /><a href={site.whatsapp} target="_blank" rel="noopener">Escribir por WhatsApp</a></li>
-        <li><Icon name="mail" size={24} /><a href={`mailto:${site.email}`}>{site.email}</a></li>
+        <li>
+          <span class="cta-label">Vía Telefónica</span>
+          <a href={site.phoneHref}>{site.phone}</a>
+        </li>
+        <li>
+          <span class="cta-label">Consultas Formales</span>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
       </ul>
     </div>
     <div class="cta-form-container">
@@ -27,33 +32,52 @@ const {
 </section>
 <style>
   .section-cta { 
-    background: #F5F5F7; /* Pearl gray to separate from Footer */
+    background: var(--stone, #F8FAFC);
     padding-block: clamp(80px, 12vw, 160px); 
-    border-bottom: 1px solid rgba(0,0,0,0.05);
   }
   .grid-2-cta { 
     display: grid; gap: 64px; grid-template-columns: 1fr; align-items: flex-start; 
   }
-  @media (min-width: 900px) { .grid-2-cta { grid-template-columns: 1fr 1fr; gap: 120px; } }
+  @media (min-width: 900px) { 
+    .grid-2-cta { grid-template-columns: 1fr 1.2fr; gap: 120px; } 
+  }
   
   .cta-text h2 { 
     font-family: var(--display);
-    font-size: clamp(2.2rem, 4vw, 3rem);
-    font-weight: 300;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.02em;
     color: var(--text-primary);
-    margin-bottom: 24px;
+    margin: 0 0 24px 0;
   }
   .lead-cta { 
-    font-size: 1.25rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 48px; 
+    font-size: clamp(1.2rem, 1.5vw, 1.5rem); 
+    color: var(--text-secondary); 
+    line-height: 1.5; 
+    margin-bottom: 64px; 
+    max-width: 35ch;
   }
   
-  .direct-cta { list-style: none; padding: 0; margin: 0; display: grid; gap: 24px; }
-  .direct-cta li { display: flex; gap: 16px; align-items: center; color: var(--accent); }
+  .direct-cta { 
+    list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 32px; 
+  }
+  .direct-cta li { 
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .cta-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(0,0,0,0.4);
+  }
   .direct-cta a { 
-    color: var(--text-primary); font-size: 1.1rem; text-decoration: none; font-weight: 500; 
-    transition: var(--transition-smooth);
+    font-family: var(--display);
+    color: var(--corporate-blue, #0A3D62); 
+    font-size: clamp(1.4rem, 2vw, 1.8rem); 
+    text-decoration: none; 
+    transition: color 0.4s;
   }
   .direct-cta a:hover { color: var(--accent); }
 </style>

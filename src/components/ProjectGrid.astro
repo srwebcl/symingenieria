@@ -1,46 +1,174 @@
 ---
 import type { Project } from "../data/site";
-interface Props { items: Project[] }
-const { items } = Astro.props;
+interface Props { items: Project[]; columns?: 1 | 2 }
+const { items, columns = 1 } = Astro.props;
 ---
-<ul class="pg">
-  {items.map((p) => (
-    <li>
-      <figure class="prj-card">
-        <div class="ratio">
-          {p.video ? (
-            <video src={p.video} poster={p.image} autoplay loop muted playsinline />
-          ) : (
-            <img src={p.image} alt={p.title} loading="lazy" decoding="async" />
-          )}
+<div class={`elegant-projects cols-${columns}`}>
+  {items.map((p, i) => (
+    <a href={`/proyectos/${p.slug}`} class="blue-card reveal-on-scroll">
+      
+      <div class="card-bg-layer">
+        <img src={p.image} alt={p.title} loading="lazy" decoding="async" />
+        <div class="gradient-fade"></div>
+      </div>
+      
+      <div class="card-content">
+        <span class="row-number">{(i+1).toString().padStart(2, '0')}</span>
+        <div class="row-text">
+          <span class="row-client">{p.client}</span>
+          <h3 class="row-title">{p.title}</h3>
         </div>
-        <figcaption>
-          <h3>{p.title}</h3>
-          <span>{p.client}</span>
-        </figcaption>
-      </figure>
-    </li>
+      </div>
+
+      <div class="card-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+      </div>
+      
+    </a>
   ))}
-</ul>
+</div>
+
 <style>
-  .pg { list-style: none; margin: 0; padding: 0; display: grid; gap: 48px 32px; grid-template-columns: 1fr; }
-  @media (min-width: 700px) { .pg { grid-template-columns: 1fr 1fr; } }
-  
-  .prj-card { margin: 0; display: flex; flex-direction: column; group; }
-  
-  figcaption { 
-    padding-top: 20px; 
-    border-top: 3px solid var(--accent); 
-    margin-top: 20px; 
-    transition: var(--transition-base);
+  .elegant-projects {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
   }
-  
-  h3 { margin-bottom: 6px; font-size: 1.3rem; transition: var(--transition-base); }
-  span { color: var(--steel); font-size: 0.95rem; font-weight: 500; }
-  
-  .section--ink h3 { color: var(--white); }
-  .section--ink span { color: #94A3B8; /* Slate 400 */ }
-  
-  /* Hover effects through the ratio container already set in global.css */
-  .prj-card:hover figcaption { border-top-color: var(--accent-dark); }
+  .cols-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  @media (min-width: 1024px) {
+    .cols-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .blue-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--corporate-blue, #0A3D62);
+    padding: 40px 32px;
+    text-decoration: none;
+    color: #FFF;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  @media (min-width: 768px) {
+    .blue-card {
+      padding: 56px 48px;
+    }
+  }
+
+  @media (hover: hover) {
+    .blue-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(10, 61, 98, 0.2);
+    }
+    
+    .blue-card:hover .card-arrow {
+      color: var(--accent);
+      transform: translateX(6px);
+    }
+    
+    .blue-card:hover .card-bg-layer img {
+      transform: scale(1.05);
+    }
+  }
+
+  /* Background Image & Gradient Layer */
+  .card-bg-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .card-bg-layer img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 70%; /* Image takes up the right portion */
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gradient-fade {
+    position: absolute;
+    inset: 0;
+    /* Perfect fade: Solid corporate blue on the left blending into transparent blue over the image */
+    background: linear-gradient(to right, 
+      var(--corporate-blue, #0A3D62) 0%, 
+      var(--corporate-blue, #0A3D62) 35%, 
+      rgba(10, 61, 98, 0.6) 75%, 
+      rgba(10, 61, 98, 0.2) 100%
+    );
+  }
+
+  /* Left Text Content */
+  .card-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 60%;
+  }
+
+  @media (min-width: 768px) {
+    .card-content {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 32px;
+    }
+  }
+
+  .row-number {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 4px;
+  }
+
+  .row-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row-client {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+  }
+
+  .row-title {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 400;
+    line-height: 1.25;
+    margin: 0;
+    color: #FFF;
+  }
+
+  /* Right Arrow */
+  .card-arrow {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    transition: transform 0.4s ease, color 0.4s ease;
+  }
 </style>

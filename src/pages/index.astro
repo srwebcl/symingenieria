@@ -26,68 +26,18 @@ const values = [
         <p class="hero-subtitle">Ingeniería, suministro, construcción y montaje para plantas mineras e industriales.</p>
         <div class="hero-actions">
           <a class="btn-solid-radical" href="/contacto">Cotizar un proyecto</a>
-          <a class="btn-outline-radical" href="/especialidades">Ver especialidades</a>
+          <a class="btn-outline-radical" href="#especialidades">
+            Ver especialidades
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+          </a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Ticker de Clientes (Infinite Scroll) -->
-  <div class="client-ticker reveal-on-scroll delay-1">
-    <div class="ticker-track">
-      <div class="ticker-content">
-        <img class="client-logo" src="/img/logos/logo-mlp.svg" alt="Minera Los Pelambres" />
-        <img class="client-logo" src="/img/logos/CAP_logo.svg.webp" alt="CAP" />
-        <img class="client-logo" src="/img/logos/enami.jpg" alt="ENAMI" />
-        <img class="client-logo" src="/img/logos/caserones.png" alt="Caserones" />
-        <img class="client-logo" src="/img/logos/san-geronimo.png" alt="Minera San Gerónimo" />
-        <img class="client-logo" src="/img/logos/arqueros.png" alt="Minera Arqueros" />
-      </div>
-      <div class="ticker-content" aria-hidden="true">
-        <img class="client-logo" src="/img/logos/logo-mlp.svg" alt="Minera Los Pelambres" />
-        <img class="client-logo" src="/img/logos/CAP_logo.svg.webp" alt="CAP" />
-        <img class="client-logo" src="/img/logos/enami.jpg" alt="ENAMI" />
-        <img class="client-logo" src="/img/logos/caserones.png" alt="Caserones" />
-        <img class="client-logo" src="/img/logos/san-geronimo.png" alt="Minera San Gerónimo" />
-        <img class="client-logo" src="/img/logos/arqueros.png" alt="Minera Arqueros" />
-      </div>
-    </div>
-  </div>
-
-  <!-- Presentación (Manifesto Layout) -->
-  <section class="section-radical" id="intro">
-    <div class="manifesto-layout">
-      <h2 class="title-massive manifesto-title">Un solo equipo desde el diseño hasta la obra.</h2>
-      
-      <div class="manifesto-lead reveal-on-scroll delay-1">
-        <p class="lead-radical">Desarrollamos ingeniería conceptual, básica y de detalle, gestionamos el abastecimiento y conducimos la construcción de proyectos mineros e industriales.</p>
-        <div class="mt-12">
-          <a class="btn-solid-dark" href="/nosotros">Conozca a S&M Ingeniería</a>
-        </div>
-      </div>
-
-      <div class="manifesto-body reveal-on-scroll delay-2">
-        <p class="body-radical">Nuestros profesionales suman más de 15 años de experiencia en las especialidades de obras civiles, estructuras, montaje, piping e inspección. Trabajamos sin grandes estructuras administrativas, lo que mantiene bajo el costo para nuestros clientes.</p>
-      </div>
-    </div>
-    <div class="full-width-image image-reveal reveal-on-scroll delay-3">
-      <img src={img.foto2} alt="Equipo de S&M Ingeniería en terreno" loading="lazy" />
-    </div>
-  </section>
-
-  <!-- Cita / misión -->
-  <section class="section-radical bg-dark-radical">
-    <div class="quote-container">
-      <blockquote>
-        <p>Entregamos soluciones de ingeniería, construcción y gestión de proyectos con un alto nivel de calidad y especialización para la minería e industria del centro-norte de Chile.</p>
-        <footer>Nuestra misión</footer>
-      </blockquote>
     </div>
   </section>
 
   <!-- Especialidades -->
-  <section class="section-radical">
-    <div class="header-radical">
+  <section class="section-radical" id="especialidades">
+    <div class="header-radical reveal-on-scroll">
       <div class="header-radical-text">
         <span class="eyebrow-radical">Capacidades</span>
         <h2 class="title-section">Especialidades</h2>
@@ -99,44 +49,68 @@ const values = [
     </div>
   </section>
 
-  <!-- Procesos Críticos (Slider Interactivo) -->
-  <section class="section-radical bg-black-radical">
-    <div class="header-radical">
-      <div class="header-radical-text">
-        <span class="eyebrow-radical eyebrow-light">Ejecución en Terreno</span>
-        <h2 class="title-section text-white">Capacidad técnica en procesos críticos</h2>
+  <!-- Presentación e Integración de Clientes -->
+  <section class="section-radical" id="intro">
+    
+    <h2 class="brief-title reveal-on-scroll delay-1">Un solo equipo desde el diseño hasta la obra.</h2>
+
+    <div class="brief-grid reveal-on-scroll delay-2">
+      <div class="brief-col align-right">
+        <p class="brief-text">Desarrollamos ingeniería conceptual, básica y de detalle, gestionamos el abastecimiento y conducimos la construcción de proyectos mineros e industriales.</p>
+      </div>
+
+      <div class="brief-col divider-col align-left">
+        <p class="brief-text">Nuestros profesionales suman más de 15 años de experiencia en las especialidades de obras civiles, estructuras, montaje, piping e inspección.</p>
       </div>
     </div>
-    
-    <div class="slider-container">
-      <button class="slider-btn prev-btn" aria-label="Proceso Anterior">
-        <div class="arrow-icon"></div>
-      </button>
-      
-      <div class="slider-track" id="procesos-slider">
-        <div class="slider-slide">
-          <div class="video-card">
-            <video src="/videos/filtro.mp4" autoplay loop muted playsinline></video>
-            <div class="video-label">Filtro de Concentrado</div>
+
+    <!-- Ticker de Clientes Integrado -->
+    <div class="clients-section reveal-on-scroll delay-3">
+      <p class="clients-eyebrow">Han confiado en nosotros</p>
+      <div class="client-ticker">
+        <div class="ticker-track">
+          <div class="ticker-content">
+            <img class="client-logo" src="/img/logos/logo-mlp.svg" alt="Minera Los Pelambres" />
+            <img class="client-logo" src="/img/logos/CAP_logo.svg.webp" alt="CAP" />
+            <img class="client-logo" src="/img/logos/enami.jpg" alt="ENAMI" />
+            <img class="client-logo" src="/img/logos/caserones.png" alt="Caserones" />
+            <img class="client-logo" src="/img/logos/san-geronimo.png" alt="Minera San Gerónimo" />
+            <img class="client-logo" src="/img/logos/arqueros.png" alt="Minera Arqueros" />
           </div>
-        </div>
-        <div class="slider-slide">
-          <div class="video-card">
-            <video src="/videos/magnetica.mp4" autoplay loop muted playsinline></video>
-            <div class="video-label">Separación Magnética</div>
+          <div class="ticker-content" aria-hidden="true">
+            <img class="client-logo" src="/img/logos/logo-mlp.svg" alt="Minera Los Pelambres" />
+            <img class="client-logo" src="/img/logos/CAP_logo.svg.webp" alt="CAP" />
+            <img class="client-logo" src="/img/logos/enami.jpg" alt="ENAMI" />
+            <img class="client-logo" src="/img/logos/caserones.png" alt="Caserones" />
+            <img class="client-logo" src="/img/logos/san-geronimo.png" alt="Minera San Gerónimo" />
+            <img class="client-logo" src="/img/logos/arqueros.png" alt="Minera Arqueros" />
           </div>
         </div>
       </div>
-      
-      <button class="slider-btn next-btn" aria-label="Siguiente Proceso">
-        <div class="arrow-icon"></div>
-      </button>
+    </div>
+
+    <div class="brief-footer reveal-on-scroll delay-4">
+      <a class="btn-solid-radical btn-hover-red" href="/nosotros">Conozca a S&M Ingeniería</a>
+    </div>
+
+  </section>
+
+  <!-- Cita / misión -->
+  <section class="section-radical bg-corporate-radical">
+    <div class="quote-container">
+      <blockquote>
+        <p class="reveal-on-scroll delay-1">Entregamos soluciones de ingeniería, construcción y gestión de proyectos con un alto nivel de calidad y especialización para la minería e industria del centro-norte de Chile.</p>
+        <footer class="reveal-on-scroll delay-2">Nuestra misión</footer>
+      </blockquote>
     </div>
   </section>
 
+  </section>
+
+
   <!-- Proyectos -->
-  <section class="section-radical">
-    <div class="header-radical">
+  <section class="section-radical" id="proyectos">
+    <div class="header-radical reveal-on-scroll">
       <div class="header-radical-text">
         <span class="eyebrow-radical">Casos de Éxito</span>
         <h2 class="title-section">Proyectos destacados</h2>
@@ -150,22 +124,32 @@ const values = [
 
   <!-- Por qué nosotros -->
   <section class="section-radical border-top-radical">
-    <div class="header-radical">
+    <div class="header-radical reveal-on-scroll">
       <div class="header-radical-text">
         <span class="eyebrow-radical">Excelencia Operacional</span>
         <h2 class="title-section">¿Por qué trabajar con nosotros?</h2>
       </div>
     </div>
     <div class="values-grid">
-      {values.map((v) => (
-        <div class="value-block">
+      {values.map((v, index) => (
+        <div class="value-block reveal-on-scroll">
+          <span class="value-number">0{index + 1}</span>
           <h3>{v.title}</h3>
           <p>{v.text}</p>
         </div>
       ))}
     </div>
-    <div class="offices-radical">
-      <p>Profesionales directamente en terreno y reuniones en <strong>{site.offices.join(", ")}</strong>.</p>
+    <div class="cta-territorial reveal-on-scroll">
+      <div class="cta-territorial-content">
+        <span class="cta-eyebrow">Presencia Territorial</span>
+        <p class="cta-text">Profesionales directamente en terreno y reuniones operativas en <strong>{site.offices.join(", ")}</strong>.</p>
+      </div>
+      <div class="cta-territorial-action">
+        <a href="#cotizar" class="btn-cta-white">
+          Conversar sobre tu proyecto
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -195,7 +179,8 @@ const values = [
   
   .bg-dark-radical { background: var(--bg-dark); color: #FFF; }
   .bg-black-radical { background: #000; color: #FFF; }
-  .border-top-radical { border-top: 2px solid var(--text-primary); }
+  .bg-corporate-radical { background: var(--corporate-blue); color: #FFF; }
+  .border-top-radical { }
 
   /* --- HERO RADICAL --- */
   .hero-radical {
@@ -241,14 +226,27 @@ const values = [
     animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
   }
 
-  /* --- CLIENT TICKER --- */
+  /* --- CLIENT TICKER INTEGRATED --- */
+  .clients-section {
+    margin-top: clamp(64px, 8vw, 96px); /* Replaces padding since it's now inside the section */
+    width: 100%;
+  }
+  .clients-eyebrow {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-secondary);
+    margin: 0 auto 24px auto;
+  }
+  
   .client-ticker {
-    background: #FFFFFF;
-    padding: 32px 0;
+    padding: 24px 0 48px 0;
     overflow: hidden;
     position: relative;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   .client-ticker::before, .client-ticker::after {
     content: '';
@@ -288,12 +286,10 @@ const values = [
     width: auto;
     max-width: 180px;
     object-fit: contain;
-    filter: grayscale(100%) opacity(0.4) contrast(1.2);
-    transition: filter 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     mix-blend-mode: multiply; /* Removes white backgrounds from jpgs */
   }
   .client-logo:hover { 
-    filter: grayscale(0%) opacity(1) contrast(1);
     transform: scale(1.05);
   }
 
@@ -312,16 +308,16 @@ const values = [
 
   .hero-title {
     font-family: var(--display);
-    font-size: clamp(2.2rem, 4.5vw, 4.8rem);
+    font-size: clamp(2.2rem, 4vw, 4rem); /* Refined, slightly smaller */
     font-weight: 700;
     line-height: 1.05;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     color: #FFFFFF;
     max-width: 20ch;
     margin: 0;
   }
   .hero-title strong {
-    color: #FF5722; /* Safety Orange */
+    color: #FF3B30; /* Vibrant high-vis red so it pops on dark video */
   }
 
   .hero-bottom-bar {
@@ -330,7 +326,6 @@ const values = [
     justify-content: space-between;
     align-items: flex-end;
     gap: 24px; /* Tighter gap */
-    border-top: 2px solid rgba(255, 255, 255, 0.3);
     padding-top: 24px; /* Tighter padding */
     width: 100%;
   }
@@ -350,18 +345,25 @@ const values = [
   }
 
   .btn-solid-radical {
-    background: var(--accent);
+    background: var(--corporate-blue, #0A3D62);
     color: #FFF;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     padding: 16px 40px;
     text-decoration: none;
-    transition: background 0.2s;
-    border: 2px solid var(--accent);
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+    border: 2px solid var(--corporate-blue, #0A3D62);
     text-align: center;
   }
-  .btn-solid-radical:hover { background: #FFF; color: #000; border-color: #FFF; }
+  .btn-solid-radical:hover { background: #FFF; color: var(--corporate-blue, #0A3D62); border-color: #FFF; }
+  
+  /* Specific Red Hover Modifier */
+  .btn-hover-red:hover {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+    color: #FFF !important;
+  }
 
   .btn-outline-radical {
     background: transparent;
@@ -369,57 +371,73 @@ const values = [
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    padding: 16px 40px;
+    padding: 16px 32px;
     text-decoration: none;
     border: 2px solid #FFF;
-    transition: all 0.2s;
-    text-align: center;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
   }
-  .btn-outline-radical:hover { background: #FFF; color: #000; }
+  .btn-outline-radical svg {
+    transition: transform 0.3s;
+  }
+  .btn-outline-radical:hover { 
+    background: var(--accent); 
+    border-color: var(--accent); 
+    color: #FFF; 
+  }
+  .btn-outline-radical:hover svg {
+    transform: translateY(4px);
+  }
 
   /* --- TYPOGRAPHY & STRUCTURE --- */
-  .title-massive {
-    font-family: var(--display);
-    font-size: clamp(3rem, 6vw, 6rem);
-    font-weight: 400;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    margin: 0;
-    max-width: 15ch;
-  }
-
   .title-section {
     font-family: var(--display);
-    font-size: clamp(2rem, 4vw, 4rem);
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
     font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.02em;
     margin: 0;
   }
 
-  /* Manifesto Layout for Intro */
-  .manifesto-layout {
+  /* Editorial Brief Layout for Intro */
+  .brief-title {
+    font-family: var(--display);
+    font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    text-align: center;
+    margin: 0 auto 48px auto;
+    max-width: 22ch;
+  }
+
+  .brief-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 48px auto 0 auto;
   }
-  @media (min-width: 1024px) {
-    .manifesto-layout {
-      grid-template-columns: repeat(12, 1fr);
-      gap: 40px;
+  
+  @media (min-width: 768px) {
+    .brief-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
     }
-    .manifesto-title {
-      grid-column: 1 / -1;
-      margin-bottom: 40px;
+    .divider-col {
+      border-left: 1px solid rgba(0,0,0,0.2);
+      padding-left: 80px;
     }
-    .manifesto-lead {
-      grid-column: 1 / 7;
-    }
-    .manifesto-body {
-      grid-column: 8 / 12;
-      border-left: 2px solid var(--text-primary);
-      padding-left: 24px;
-    }
+  }
+
+  .brief-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
+    width: 100%;
   }
 
   .grid-radical {
@@ -441,6 +459,16 @@ const values = [
     margin: 0;
     letter-spacing: -0.01em;
   }
+  .brief-text {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  .align-right { text-align: right; }
+  .align-left { text-align: left; }
+  
   .body-radical {
     font-size: 1.15rem;
     line-height: 1.5;
@@ -465,21 +493,7 @@ const values = [
     color: var(--text-primary); 
   }
 
-  .mt-12 { margin-top: 32px; } /* Tighter margin */
-
-  /* Full Width Image with Architectural Wipe */
-  .full-width-image {
-    width: 100%;
-    height: 70vh;
-    margin-top: 48px; /* Tighter margin */
-    background: var(--concrete);
-    position: relative;
-    overflow: hidden;
-  }
-  .full-width-image img {
-    width: 100%; height: 100%; object-fit: cover;
-    filter: grayscale(100%) contrast(1.1);
-  }
+  .mt-12 { margin-top: 40px; }
   
   /* --- SCROLL REVEAL EFFECTS --- */
   .reveal-on-scroll {
@@ -496,48 +510,29 @@ const values = [
     transform: translateY(0);
   }
 
-  /* Specific effect for images */
-  .image-reveal::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: var(--text-primary);
-    transform-origin: top;
-    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-  }
-  .image-reveal.is-revealed::after {
-    transform: scaleY(0);
-  }
-  .image-reveal img {
-    transform: scale(1.1);
-    transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
-  }
-  .image-reveal.is-revealed img {
-    transform: scale(1);
-  }
-
   /* --- QUOTE SECTION --- */
   .quote-container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
+    text-align: center;
   }
   .quote-container blockquote {
     margin: 0;
   }
   .quote-container p {
     font-family: var(--display);
-    font-size: clamp(2rem, 4vw, 4.5rem);
-    line-height: 1.1;
+    font-size: clamp(1.4rem, 2vw, 2.2rem); /* Reduced from 3.5rem to be more readable */
+    line-height: 1.4;
     font-weight: 300;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px; /* Tighter margin */
+    margin-bottom: 24px;
   }
   .quote-container footer {
+    display: block;
     font-family: var(--body);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: var(--accent);
+    color: rgba(255, 255, 255, 0.7);
   }
 
   /* --- HEADER RADICAL --- */
@@ -548,11 +543,9 @@ const values = [
     align-items: flex-end;
     gap: 32px; /* Reduced gap */
     margin-bottom: 48px; /* Tighter margin (was 80) */
-    border-bottom: 2px solid var(--text-primary);
     padding-bottom: 24px; /* Tighter padding (was 40) */
   }
   .bg-black-radical .header-radical {
-    border-bottom-color: rgba(255,255,255,0.2);
   }
   .header-radical-text {
     max-width: 800px;
@@ -563,129 +556,149 @@ const values = [
     width: 100%;
   }
 
-  /* --- SLIDER --- */
-  .slider-container {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-  }
-  .slider-track {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    flex: 1;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .slider-track::-webkit-scrollbar { display: none; }
-  
-  .slider-slide {
-    flex: 0 0 100%;
-    scroll-snap-align: center;
-  }
-
-  .video-card {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/7;
-    background: #111;
-  }
-  @media (max-width: 768px) {
-    .video-card { aspect-ratio: 1/1; }
-  }
-  
-  .video-card video {
-    width: 100%; height: 100%; object-fit: cover;
-    filter: grayscale(80%) contrast(1.1);
-  }
-  
-  .video-label {
-    position: absolute;
-    top: 0; left: 0;
-    background: var(--accent);
-    color: #FFF;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 16px 32px;
-    font-size: 1.2rem;
-  }
-
-  .slider-btn {
-    width: 80px;
-    height: 80px;
-    background: transparent;
-    border: 2px solid #FFF;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background 0.2s;
-  }
-  .slider-btn:hover { background: #FFF; }
-  .slider-btn:hover .arrow-icon { border-color: #000; }
-  
-  .arrow-icon {
-    width: 20px; height: 20px;
-    border-right: 3px solid #FFF;
-    border-bottom: 3px solid #FFF;
-    transform: rotate(-45deg);
-  }
-  .prev-btn .arrow-icon {
-    transform: rotate(135deg);
-  }
 
   /* --- VALUES GRID --- */
   .values-grid {
     display: grid;
     grid-template-columns: 1fr;
-    border-left: 2px solid var(--text-primary);
+    gap: 24px;
   }
   @media (min-width: 768px) {
-    .values-grid { grid-template-columns: repeat(3, 1fr); }
+    .values-grid { grid-template-columns: repeat(3, 1fr); gap: 32px; }
   }
+  
   .value-block {
-    padding: 40px;
-    border-right: 2px solid var(--text-primary);
-    border-bottom: 2px solid var(--text-primary);
+    padding: 64px 40px;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.4s, color 0.4s, transform 0.4s;
+    background: var(--stone, #F8FAFC);
   }
+  
+  .value-number {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgba(0,0,0,0.2);
+    margin-bottom: 48px;
+    transition: color 0.4s;
+  }
+  
   .value-block h3 {
     font-family: var(--display);
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+    font-weight: 400;
     margin-bottom: 20px;
     color: var(--accent);
+    transition: color 0.4s;
   }
+  
   .value-block p {
     font-size: 1.1rem;
     line-height: 1.6;
+    color: var(--text-secondary);
+    transition: color 0.4s;
+    margin: 0;
   }
 
-  .offices-radical {
-    margin-top: 80px;
-    font-size: 1.4rem;
-    font-weight: 500;
+  /* Value Block Hover Effect */
+  @media (hover: hover) {
+    .value-block:hover {
+      background: var(--corporate-blue, #0A3D62);
+    }
+    .value-block:hover .value-number {
+      color: rgba(255,255,255,0.4);
+    }
+    .value-block:hover h3 {
+      color: var(--bg-page);
+    }
+    .value-block:hover p {
+      color: rgba(255,255,255,0.8);
+    }
   }
-  .offices-radical strong {
-    border-bottom: 2px solid var(--text-primary);
+
+  /* --- CTA Territorial --- */
+  .cta-territorial {
+    margin-top: 64px;
+    background: var(--corporate-blue, #0A3D62);
+    padding: clamp(48px, 6vw, 80px) clamp(32px, 5vw, 64px);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  @media (min-width: 992px) {
+    .cta-territorial {
+      flex-direction: row;
+      align-items: center; /* Center aligns the button with the text block vertically */
+      justify-content: space-between;
+      gap: 64px;
+    }
+  }
+  
+  .cta-territorial-content {
+    flex: 1;
+    max-width: 800px;
+  }
+  
+  .cta-eyebrow {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+  }
+  
+  .cta-text {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    line-height: 1.25;
+    margin: 0;
+    letter-spacing: -0.01em;
+    color: #FFF;
+  }
+  
+  .cta-text strong {
+    color: #FFF;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-territorial-action {
+    flex-shrink: 0;
+  }
+
+  .btn-cta-white {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #FFF;
+    color: var(--corporate-blue, #0A3D62);
+    padding: 20px 40px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.4s ease, transform 0.4s ease;
+  }
+
+  .btn-cta-white svg {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @media (hover: hover) {
+    .btn-cta-white:hover {
+      background: var(--stone, #F8FAFC);
+      transform: translateY(-2px);
+    }
+    .btn-cta-white:hover svg {
+      transform: translateX(4px);
+    }
   }
 </style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Slider Logic
-    const track = document.getElementById("procesos-slider");
-    const prevBtn = document.querySelector(".prev-btn");
-    const nextBtn = document.querySelector(".next-btn");
-
-    if (track && prevBtn && nextBtn) {
-      prevBtn.addEventListener("click", () => track.scrollBy({ left: -track.clientWidth, behavior: "smooth" }));
-      nextBtn.addEventListener("click", () => track.scrollBy({ left: track.clientWidth, behavior: "smooth" }));
-    }
-
     // Scroll Reveal Logic (Intersection Observer)
     const observerOptions = {
       root: null,

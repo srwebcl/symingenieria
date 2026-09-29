@@ -35,7 +35,16 @@ const year = new Date().getFullYear();
     </div>
   </div>
   <div class="wrap provider">
-    <p><strong>Proveedor registrado:</strong> Red Negocios CCS · SICEP · SAP Ariba · RyCE · Espacio Industrial Minero · ChileCompra Mercado Público · Wherex</p>
+    <span class="provider-eyebrow">Registros Activos</span>
+    <ul class="provider-list">
+      <li>Red Negocios CCS</li>
+      <li>SICEP</li>
+      <li>SAP Ariba</li>
+      <li>RyCE</li>
+      <li>Espacio Industrial Minero</li>
+      <li>ChileCompra</li>
+      <li>Wherex</li>
+    </ul>
   </div>
   <div class="wrap bottom">
     <span>© {year} {site.name}. <a href="/politica-de-privacidad">Política de privacidad</a></span>
@@ -64,8 +73,55 @@ const year = new Date().getFullYear();
   }
   ul a:hover::after { width: 100%; }
 
-  .provider { padding-bottom: 32px; font-size: 0.85rem; color: #64748B; /* Slate 500 */ }
-  .provider strong { color: #E2E8F0; /* Slate 200 */ font-weight: 600; }
+  .provider { 
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-block: 24px 48px; 
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  @media (min-width: 900px) {
+    .provider {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 40px;
+    }
+  }
+
+  .provider-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.6);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  
+  .provider-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .provider-list li {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 8px 16px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .provider-list li:hover {
+    color: var(--white);
+    border-color: rgba(255,255,255,0.4);
+  }
   
   .bottom { 
     display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; 

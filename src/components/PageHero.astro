@@ -1,10 +1,10 @@
 ---
 // Banner interior de página: imagen a todo el ancho, migas y título grande
-interface Props { title: string; text?: string; image: string; alt?: string; crumbs?: { label: string; href?: string }[] }
+interface Props { title: string; text?: string; image?: string; alt?: string; crumbs?: { label: string; href?: string }[] }
 const { title, text, image, alt = "", crumbs = [] } = Astro.props;
 ---
 <section class="ph">
-  <img src={image} alt={alt} fetchpriority="high" />
+  {image && <img src={image} alt={alt} fetchpriority="high" />}
   <div class="shade"></div>
   <div class="wrap in">
     {crumbs.length > 0 && (

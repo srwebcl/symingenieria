@@ -55,75 +55,103 @@ const { preset, dark = false } = Astro.props;
     display: grid; gap: 24px; 
     background: #FFFFFF;
     padding: clamp(32px, 5vw, 48px);
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+    /* Removed rounded corners and bouncy shadow to match high-end brutalism */
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid rgba(0,0,0,0.1); /* Subtle sharp border */
   }
   
   .row-premium { display: grid; gap: 24px; }
   @media (min-width: 600px) { .row-premium { grid-template-columns: 1fr 1fr; } }
   
   .label-premium { display: grid; gap: 8px; position: relative; }
-  .label-text { font-size: 0.9rem; font-weight: 500; color: #475569; }
+  .label-text { 
+    font-size: 0.85rem; 
+    font-weight: 700; 
+    text-transform: uppercase; 
+    letter-spacing: 0.1em; 
+    color: rgba(0,0,0,0.6); 
+  }
   
   .input-premium {
-    font-family: inherit; font-size: 1.05rem; font-weight: 400; 
+    font-family: inherit; 
+    font-size: 1.05rem; 
+    font-weight: 400; 
     padding: 16px 20px; 
-    border: 1px solid #E2E8F0; 
-    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,0.1); 
+    border-radius: 0; /* Sharp edges */
     background: #F8FAFC; 
     color: #0F172A; 
     width: 100%; 
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.01) inset;
+    transition: all 0.3s ease;
   }
   
   .input-premium::placeholder { color: #94A3B8; }
   
-  .input-premium:hover { border-color: #CBD5E1; background: #FFFFFF; }
+  .input-premium:hover { 
+    background: #FFFFFF; 
+    border-color: rgba(0,0,0,0.2); 
+  }
   
   .input-premium:focus { 
     outline: none; 
-    border-color: var(--accent); 
+    border-color: var(--corporate-blue, #0A3D62); 
     background: #FFFFFF; 
-    box-shadow: 0 0 0 4px rgba(145, 27, 34, 0.12), 0 1px 2px rgba(0,0,0,0.01) inset; 
-    transform: translateY(-1px);
+    /* Sharp bottom accent instead of bouncy ring */
+    box-shadow: inset 0 -2px 0 var(--corporate-blue, #0A3D62); 
   }
 
   .select-wrapper { position: relative; }
   .select-wrapper select { appearance: none; padding-right: 48px; }
-  .select-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #64748B; pointer-events: none; }
+  .select-icon { 
+    position: absolute; right: 20px; top: 50%; transform: translateY(-50%); 
+    color: rgba(0,0,0,0.4); pointer-events: none; 
+  }
   
   .btn-submit-premium { 
     justify-self: start;
-    margin-top: 8px;
-    background: var(--accent);
+    margin-top: 16px;
+    background: var(--corporate-blue, #0A3D62);
     color: #FFFFFF;
     font-family: inherit;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
-    padding: 18px 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 20px 48px;
     border: none;
-    border-radius: 999px;
+    border-radius: 0; /* Sharp edges */
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(145, 27, 34, 0.2);
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: background 0.4s ease, transform 0.4s ease;
   }
   
   .btn-submit-premium:hover { 
-    background: #7A161C;
+    background: var(--text-primary);
     transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(145, 27, 34, 0.3);
   }
   
   .btn-submit-premium:active {
-    transform: translateY(1px);
-    box-shadow: 0 5px 10px rgba(145, 27, 34, 0.2);
+    transform: translateY(0);
   }
   
-  .note-premium { font-size: 0.85rem; color: #94A3B8; margin: 0; text-align: center; }
+  .note-premium { 
+    font-size: 0.85rem; color: #94A3B8; margin: 0; text-align: left; 
+    margin-top: 8px;
+  }
   
   /* Dark mode overrides if needed */
-  .dark { background: transparent; padding: 0; box-shadow: none; }
-  .dark .label-text { color: var(--white); }
-  .dark .note-premium { color: #CBD5E1; text-align: left; }
+  .dark { background: transparent; padding: 0; border: none; }
+  .dark .label-text { color: rgba(255,255,255,0.6); }
+  .dark .note-premium { color: rgba(255,255,255,0.5); }
+  .dark .input-premium {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+    color: #FFF;
+  }
+  .dark .input-premium:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  .dark .input-premium:focus {
+    box-shadow: inset 0 -2px 0 var(--accent);
+  }
 </style>
