@@ -41,6 +41,48 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    "title": "Recuperación de agua y minerales de hierro",
+    "client": "Cía. Minera San Gerónimo (Planta Talcuna)",
+    "slug": "recuperacion-agua-minerales-hierro",
+    "image": "/img/proyectos/galpon.png",
+    "services": [
+      "obras-civiles-y-arquitectura",
+      "estructuras-y-caldereria",
+      "montaje-mecanico-y-procesos",
+      "piping"
+    ]
+  },
+  {
+    "title": "Ingeniería básica avanzada de filtrado de relaves",
+    "client": "Minera Los Pelambres (Antofagasta Minerals)",
+    "slug": "ingenieria-filtrado-relaves",
+    "image": "/img/proyectos/filtro.png",
+    "services": [
+      "obras-civiles-y-arquitectura",
+      "estructuras-y-caldereria",
+      "montaje-mecanico-y-procesos",
+      "piping"
+    ]
+  },
+  {
+    "title": "Obras de arte N°4 y N°5 del camino de acceso a la dársena",
+    "client": "Puerto Cruz Grande (CMP)",
+    "slug": "obras-de-arte-camino-acceso",
+    "image": "/img/proyectos/molino.png",
+    "services": [
+      "obras-civiles-y-arquitectura"
+    ]
+  },
+  {
+    "title": "Sostenimiento de muro de contención y cierre estructural",
+    "client": "Poder de Compra Guayacán (ENAMI)",
+    "slug": "sostenimiento-muro-contencion",
+    "image": "/img/proyectos/pilon.png",
+    "services": [
+      "obras-civiles-y-arquitectura"
+    ]
+  },
+  {
     "title": "Servicios de ingeniería, obras hidráulicas y obras civiles menores",
     "client": "Cía. Minera San Gerónimo",
     "slug": "servicios-de-ingenieria-obras-hidraulicas-y-obras-civiles-menores",
@@ -79,27 +121,6 @@ export const projects: Project[] = [
     ]
   },
   {
-    "title": "Sostenimiento de muro de contención y cierre estructural",
-    "client": "Poder de Compra Guayacán – ENAMI",
-    "slug": "sostenimiento-de-muro-de-contencion-y-cierre-estructural",
-    "image": "/img/proyectos/galpon.png",
-    "services": [
-      "obras-civiles"
-    ]
-  },
-  {
-    "title": "Ingeniería básica avanzada de filtrado de relaves",
-    "client": "Minera Los Pelambres (Antofagasta Minerals)",
-    "slug": "ingenieria-basica-avanzada-de-filtrado-de-relaves",
-    "image": "/img/proyectos/galpon.png",
-    "services": [
-      "obras-civiles",
-      "estructuras",
-      "montaje-mecanico",
-      "piping"
-    ]
-  },
-  {
     "title": "Nuevo diseño del pipeline de aguas de proceso del sector molienda",
     "client": "Planta Talcuna – Cía. Minera San Gerónimo",
     "slug": "nuevo-diseno-del-pipeline-de-aguas-de-proceso-del-sector-molienda",
@@ -134,15 +155,6 @@ export const projects: Project[] = [
     "image": "/img/proyectos/galpon.png",
     "services": [
       "montaje-mecanico"
-    ]
-  },
-  {
-    "title": "Obras de arte N°4 y N°5 del camino de acceso a la dársena",
-    "client": "Puerto Cruz Grande – CMP",
-    "slug": "obras-de-arte-n-4-y-n-5-del-camino-de-acceso-a-la-darsena",
-    "image": "/img/proyectos/galpon.png",
-    "services": [
-      "obras-civiles"
     ]
   },
   {
